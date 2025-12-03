@@ -1,18 +1,22 @@
+import * as v from 'valibot';
+import { RecipesSchema, type Recipe } from '$lib/schemas/recipe';
+
 export const prerender = true;
 
-export async function entries() {
-	const recipes = await import('$lib/data/recipes.json');
-	return Object.keys(recipes.default).map((id) => ({ id }));
-}
+export const entries = async () => {
+	const recipes = await import('$lib/test-data/recipes.json');
+	const validatedRecipes = v.parse(RecipesSchema, recipes.default);
+	return Object.keys(validatedRecipes).map((id) => ({ id }));
+};
 
-export async function load({ params }) {
-	const recipes = await import('$lib/data/recipes.json');
+export const load = async ({ params }) => {
+	const recipes = await import('$lib/test-data/recipes.json');
+	const validatedRecipes = v.parse(RecipesSchema, recipes.default);
 
-	const recipeResult = Object.entries(recipes.default).find(([id]) => id === params.id);
+	const recipe = validatedRecipes[params.id] as Recipe | undefined;
 
-	if (recipeResult) {
-		const [, recipe] = recipeResult;
+	if (recipe) {
 		return { recipe };
 	}
 	throw new Error('Recipe not found');
-}
+};
