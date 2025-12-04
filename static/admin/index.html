@@ -86,7 +86,7 @@
 			}
 		});
 
-		// Custom validation for unique recipe IDs
+		// Custom validation for unique recipe IDs and required instructions
 		CMS.registerEventListener({
 				name: 'preSave',
 				handler: ({ entry }) => {
@@ -106,6 +106,20 @@
 						const uniqueDuplicates = [...new Set(duplicates)];
 						throw new Error(
 							`Duplicate recipe ID(s) found: ${uniqueDuplicates.join(', ')}. Each recipe must have a unique ID.`
+						);
+					}
+
+					// Check that all recipes have at least one instruction
+					const recipesWithoutInstructions = recipeArray.filter(
+						(recipe) => !recipe.instructions || recipe.instructions.length === 0
+					);
+
+					if (recipesWithoutInstructions.length > 0) {
+						const titles = recipesWithoutInstructions
+							.map((recipe) => recipe.title || 'Sin título')
+							.join(', ');
+						throw new Error(
+							`La(s) siguiente(s) receta(s) debe(n) tener al menos una instrucción: ${titles}`
 						);
 					}
 				}

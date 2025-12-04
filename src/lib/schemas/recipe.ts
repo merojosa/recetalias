@@ -17,7 +17,7 @@ export const RecipeSchema = v.object({
 	),
 	date: v.pipe(v.string(), v.isoDate()),
 	image: RecipeImageSchema,
-	instructions: v.array(v.string())
+	instructions: v.pipe(v.array(v.string()), v.minLength(1, 'At least one instruction is required'))
 });
 
 export const RecipesFileSchema = v.object({

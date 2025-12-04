@@ -67,5 +67,4 @@ collections:
                 name: 'instructions'
                 widget: 'list'
                 field: { label: 'Step', name: 'step', widget: 'text' }
-                min: 1
 
