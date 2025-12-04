@@ -8,13 +8,29 @@ media_folder: static/images/uploads
 public_folder: /images/uploads
 
 collections:
+  - name: 'ingredients'
+    label: 'Ingredientes'
+    files:
+      - name: 'all-ingredients'
+        label: 'Todos los ingredientes'
+        file: 'src/lib/test-data/ingredients.json'
+        fields:
+          - label: 'Ingredients'
+            name: 'ingredients'
+            widget: 'list'
+            label_singular: 'Ingredient'
+            collapsed: true
+            summary: '{{fields.name}} ({{fields.id}})'
+            fields:
+              - { label: 'ID', name: 'id', widget: 'string', required: true, pattern: ['^[a-z0-9-]+$', 'Only lowercase letters, numbers, and hyphens'] }
+              - { label: 'Name', name: 'name', widget: 'string', required: true }
+
   - name: 'recipes'
     label: 'Recetas'
     files:
       - name: 'all-recipes'
         label: 'Todas las recetas'
         file: 'src/lib/test-data/recipes.json'
-        format: 'json'
         fields:
           - label: 'Recipes'
             name: 'recipes'
@@ -27,13 +43,14 @@ collections:
               - { label: 'Title', name: 'title', widget: 'string', required: true }
               - label: 'Ingredients'
                 name: 'ingredients'
-                widget: 'select'
+                widget: 'relation'
+                collection: 'ingredients'
+                file: 'all-ingredients'
+                search_fields: ['ingredients.*.name', 'ingredients.*.id']
+                display_fields: ['ingredients.*.name']
+                value_field: 'ingredients.*.id'
                 multiple: true
                 min: 1
-                options:
-                  - { label: 'Culantro', value: 'cilantro' }
-                  - { label: 'Arroz', value: 'rice' }
-                  - { label: 'Frijoles', value: 'beans' }
               - label: 'Date'
                 name: 'date'
                 widget: 'date'
@@ -51,8 +68,4 @@ collections:
                 widget: 'list'
                 field: { label: 'Step', name: 'step', widget: 'text' }
                 min: 1
-            options:
-              - { label: 'Culantro', value: 'cilantro' }
-              - { label: 'Arroz', value: 'rice' }
-              - { label: 'Frijoles', value: 'beans' }
 

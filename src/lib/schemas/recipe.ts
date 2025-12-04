@@ -1,7 +1,7 @@
 import * as v from 'valibot';
 import ingredientsData from '$lib/test-data/ingredients.json';
 
-const validIngredients = Object.keys(ingredientsData);
+const validIngredients = ingredientsData.ingredients.map((ingredient) => ingredient.id);
 
 export const RecipeImageSchema = v.object({
 	url: v.pipe(v.string(), v.url()),

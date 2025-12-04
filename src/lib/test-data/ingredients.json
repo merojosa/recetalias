@@ -1,11 +1,20 @@
 {
-	"cilantro": {
-		"name": "Culantro"
-	},
-	"rice": {
-		"name": "Arroz"
-	},
-	"beans": {
-		"name": "Frijoles"
-	}
+  "ingredients": [
+    {
+      "id": "cilantro",
+      "name": "Culantro"
+    },
+    {
+      "id": "rice",
+      "name": "Arroz"
+    },
+    {
+      "id": "beans",
+      "name": "Frijoles"
+    },
+    {
+      "id": "broccoli",
+      "name": "Brócoli"
+    }
+  ]
 }
