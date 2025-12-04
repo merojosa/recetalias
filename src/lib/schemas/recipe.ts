@@ -9,6 +9,7 @@ export const RecipeImageSchema = v.object({
 });
 
 export const RecipeSchema = v.object({
+	id: v.string(),
 	title: v.string(),
 	ingredients: v.pipe(
 		v.array(v.pipe(v.string(), v.picklist(validIngredients))),
@@ -19,8 +20,16 @@ export const RecipeSchema = v.object({
 	instructions: v.array(v.string())
 });
 
-export const RecipesSchema = v.record(v.string(), RecipeSchema);
+export const RecipesFileSchema = v.object({
+	recipes: v.pipe(
+		v.array(RecipeSchema),
+		v.check((recipes) => {
+			const ids = recipes.map((r) => r.id);
+			return new Set(ids).size === ids.length;
+		}, 'Recipe IDs must be unique')
+	)
+});
 
 export type Recipe = v.InferOutput<typeof RecipeSchema>;
 export type RecipeImage = v.InferOutput<typeof RecipeImageSchema>;
-export type Recipes = v.InferOutput<typeof RecipesSchema>;
+export type RecipesFile = v.InferOutput<typeof RecipesFileSchema>;

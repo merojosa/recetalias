@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Content Manager</title>
+	</head>
+	<body>
+		<!-- Include the script that builds the page and powers Decap CMS -->
+		<script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+		<script>
+			// Custom validation for unique recipe IDs
+			CMS.registerEventListener({
+				name: 'preSave',
+				handler: ({ entry }) => {
+					const data = entry.get('data');
+					const recipes = data.get('recipes');
+
+					if (!recipes) return;
+
+					// Convert to plain JS array
+					const recipeArray = recipes.toJS ? recipes.toJS() : recipes;
+
+					// Check for duplicate IDs
+					const ids = recipeArray.map((recipe) => recipe.id).filter(Boolean);
+					const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
+
+					if (duplicates.length > 0) {
+						const uniqueDuplicates = [...new Set(duplicates)];
+						throw new Error(
+							`Duplicate recipe ID(s) found: ${uniqueDuplicates.join(', ')}. Each recipe must have a unique ID.`
+						);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

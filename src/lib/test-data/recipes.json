@@ -1,47 +1,61 @@
 {
-	"1": {
-		"title": "Pinto",
-		"ingredients": ["cilantro", "rice", "beans"],
-		"date": "2025-01-04",
-		"image": {
-			"url": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F1640773%2Fpexels-photo-1640773.jpeg%3Fcs%3Dsrgb%26dl%3Dbowl-cuisine-delicious-1640773.jpg",
-			"alt": "Foto de pinto"
-		},
-		"instructions": [
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor euismod scelerisque.",
-			"Curabitur id erat nec purus pellentesque porttitor. Vivamus auctor sem vel ipsum.",
-			"Etiam eu elementum libero.",
-			"Praesent eget libero nec sem pretium rhoncus.",
-			"Etiam eu elementum libero. Phasellus gravida, nisl vitae sagittis faucibus, risus leo efficitur enim, quis tristique enim ipsum et nunc. Aliquam dapibus euismod pretium. Etiam vulputate aliquet feugiat."
-		]
-	},
-	"2": {
-		"title": "Arroz con culantro",
-		"ingredients": ["cilantro", "rice"],
-		"date": "2024-12-21",
-		"image": {
-			"url": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fassets.vogue.com%2Fphotos%2F6352ccb841ea2bd565be085f%2F4%3A3%2Fw_1600%252Cc_limit%2FGettyImages-1223580360.jpg",
-			"alt": "Foto de Arroz con culantro"
-		},
-		"instructions": [
-			"Etiam eu elementum libero.",
-			"Praesent eget libero nec sem pretium rhoncus.",
-			"Curabitur id erat nec purus pellentesque porttitor. Vivamus auctor sem vel ipsum."
-		]
-	},
-	"3": {
-		"title": "Culantro con aire",
-		"ingredients": ["cilantro"],
-		"date": "2025-09-13",
-		"image": {
-			"url": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.explore.com%2Fimg%2Fgallery%2Fnever-try-to-bring-these-foods-to-the-us-after-your-international-travels%2Fl-intro-1704316057.jpg",
-			"alt": "Foto de comida"
-		},
-		"instructions": [
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor euismod scelerisque.",
-			"Etiam eu elementum libero.",
-			"Etiam eu elementum libero. Phasellus gravida, nisl vitae sagittis faucibus, risus leo efficitur enim, quis tristique enim ipsum et nunc. Aliquam dapibus euismod pretium. Etiam vulputate aliquet feugiat.",
-			"Praesent eget libero nec sem pretium rhoncus."
-		]
-	}
+  "recipes": [
+    {
+      "id": "pinto",
+      "title": "Pinto clásico",
+      "ingredients": [
+        "cilantro",
+        "rice",
+        "beans"
+      ],
+      "date": "2025-01-04",
+      "image": {
+        "url": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F1640773%2Fpexels-photo-1640773.jpeg%3Fcs%3Dsrgb%26dl%3Dbowl-cuisine-delicious-1640773.jpg",
+        "alt": "Foto de pinto"
+      },
+      "instructions": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor euismod scelerisque.",
+        "Curabitur id erat nec purus pellentesque porttitor. Vivamus auctor sem vel ipsum.",
+        "Etiam eu elementum libero.",
+        "Praesent eget libero nec sem pretium rhoncus.",
+        "Etiam eu elementum libero. Phasellus gravida, nisl vitae sagittis faucibus, risus leo efficitur enim, quis tristique enim ipsum et nunc. Aliquam dapibus euismod pretium. Etiam vulputate aliquet feugiat."
+      ]
+    },
+    {
+      "id": "arroz-con-culantro",
+      "title": "Arroz con culantro",
+      "ingredients": [
+        "cilantro",
+        "rice"
+      ],
+      "date": "2024-12-21",
+      "image": {
+        "url": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fassets.vogue.com%2Fphotos%2F6352ccb841ea2bd565be085f%2F4%3A3%2Fw_1600%252Cc_limit%2FGettyImages-1223580360.jpg",
+        "alt": "Foto de Arroz con culantro"
+      },
+      "instructions": [
+        "Etiam eu elementum libero.",
+        "Praesent eget libero nec sem pretium rhoncus.",
+        "Curabitur id erat nec purus pellentesque porttitor. Vivamus auctor sem vel ipsum."
+      ]
+    },
+    {
+      "id": "culantro-con-aire",
+      "title": "Culantro con aire",
+      "ingredients": [
+        "cilantro"
+      ],
+      "date": "2025-09-13",
+      "image": {
+        "url": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.explore.com%2Fimg%2Fgallery%2Fnever-try-to-bring-these-foods-to-the-us-after-your-international-travels%2Fl-intro-1704316057.jpg",
+        "alt": "Foto de comida"
+      },
+      "instructions": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor euismod scelerisque.",
+        "Etiam eu elementum libero.",
+        "Etiam eu elementum libero. Phasellus gravida, nisl vitae sagittis faucibus, risus leo efficitur enim, quis tristique enim ipsum et nunc. Aliquam dapibus euismod pretium. Etiam vulputate aliquet feugiat.",
+        "Praesent eget libero nec sem pretium rhoncus."
+      ]
+    }
+  ]
 }

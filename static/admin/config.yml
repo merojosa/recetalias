@@ -1,0 +1,58 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: static/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: 'recipes'
+    label: 'Recetas'
+    files:
+      - name: 'all-recipes'
+        label: 'Todas las recetas'
+        file: 'src/lib/test-data/recipes.json'
+        format: 'json'
+        fields:
+          - label: 'Recipes'
+            name: 'recipes'
+            widget: 'list'
+            label_singular: 'Recipe'
+            collapsed: true
+            summary: '{{fields.title}}'
+            fields:
+              - { label: 'ID', name: 'id', widget: 'string', required: true, pattern: ['^[a-z0-9-]+$', 'Only lowercase letters, numbers, and hyphens'] }
+              - { label: 'Title', name: 'title', widget: 'string', required: true }
+              - label: 'Ingredients'
+                name: 'ingredients'
+                widget: 'select'
+                multiple: true
+                min: 1
+                options:
+                  - { label: 'Culantro', value: 'cilantro' }
+                  - { label: 'Arroz', value: 'rice' }
+                  - { label: 'Frijoles', value: 'beans' }
+              - label: 'Date'
+                name: 'date'
+                widget: 'date'
+                format: 'YYYY-MM-DD'
+                required: true
+              - label: 'Image'
+                name: 'image'
+                widget: 'object'
+                collapsed: false
+                fields:
+                  - { label: 'URL', name: 'url', widget: 'string', required: true }
+                  - { label: 'Alt Text', name: 'alt', widget: 'string', required: true }
+              - label: 'Instructions'
+                name: 'instructions'
+                widget: 'list'
+                field: { label: 'Step', name: 'step', widget: 'text' }
+                min: 1
+            options:
+              - { label: 'Culantro', value: 'cilantro' }
+              - { label: 'Arroz', value: 'rice' }
+              - { label: 'Frijoles', value: 'beans' }
+
