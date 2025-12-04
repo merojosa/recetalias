@@ -37,9 +37,9 @@ collections:
             widget: 'list'
             label_singular: 'Recipe'
             collapsed: true
-            summary: '{{fields.title}}'
+            summary: '{{fields.title}} (/recetas/{{fields.id}})'
             fields:
-              - { label: 'ID', name: 'id', widget: 'string', required: true, pattern: ['^[a-z0-9-]+$', 'Only lowercase letters, numbers, and hyphens'] }
+              - { label: 'ID', name: 'id', widget: 'string', required: true, pattern: ['^[a-z0-9-]+$', 'Only lowercase letters, numbers, and hyphens'], hint: 'Compone el URL de la receta, no cambiarlo frecuentemente' }
               - { label: 'Title', name: 'title', widget: 'string', required: true }
               - label: 'Ingredients'
                 name: 'ingredients'
