@@ -22,7 +22,7 @@ collections:
             collapsed: true
             summary: '{{fields.name}} ({{fields.id}})'
             fields:
-              - { label: 'ID', name: 'id', widget: 'string', required: true, pattern: ['^[a-z0-9-]+$', 'Only lowercase letters, numbers, and hyphens'] }
+              - { label: 'ID', name: 'id', widget: 'hidden', required: false }
               - { label: 'Name', name: 'name', widget: 'string', required: true }
 
   - name: 'recipes'
