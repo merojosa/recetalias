@@ -7,6 +7,8 @@ local_backend: true
 media_folder: static/images/uploads
 public_folder: /images/uploads
 
+locale: es
+
 collections:
   - name: 'ingredients'
     label: 'Ingredientes'
@@ -15,15 +17,15 @@ collections:
         label: 'Todos los ingredientes'
         file: 'src/lib/test-data/ingredients.json'
         fields:
-          - label: 'Ingredients'
+          - label: 'Ingredientes'
             name: 'ingredients'
             widget: 'list'
-            label_singular: 'Ingredient'
+            label_singular: 'Ingrediente'
             collapsed: true
             summary: '{{fields.name}} ({{fields.id}})'
             fields:
               - { label: 'ID', name: 'id', widget: 'hidden', required: false }
-              - { label: 'Name', name: 'name', widget: 'string', required: true }
+              - { label: 'Nombre', name: 'name', widget: 'string', required: true }
 
   - name: 'recipes'
     label: 'Recetas'
@@ -32,16 +34,16 @@ collections:
         label: 'Todas las recetas'
         file: 'src/lib/test-data/recipes.json'
         fields:
-          - label: 'Recipes'
+          - label: 'Recetas'
             name: 'recipes'
             widget: 'list'
-            label_singular: 'Recipe'
+            label_singular: 'Receta'
             collapsed: true
             summary: '{{fields.title}} (/recetas/{{fields.id}})'
             fields:
-              - { label: 'ID', name: 'id', widget: 'string', required: true, pattern: ['^[a-z0-9-]+$', 'Only lowercase letters, numbers, and hyphens'], hint: 'Compone el URL de la receta, no cambiarlo frecuentemente' }
-              - { label: 'Title', name: 'title', widget: 'string', required: true }
-              - label: 'Ingredients'
+              - { label: 'ID', name: 'id', widget: 'string', required: true, pattern: ['^[a-z0-9-]+$', 'Solo letras minúsculas, números y guiones'], hint: 'Compone el URL de la receta, no cambiarlo frecuentemente' }
+              - { label: 'Título', name: 'title', widget: 'string', required: true }
+              - label: 'Ingredientes'
                 name: 'ingredients'
                 widget: 'relation'
                 collection: 'ingredients'
@@ -51,20 +53,20 @@ collections:
                 value_field: 'ingredients.*.id'
                 multiple: true
                 min: 1
-              - label: 'Date'
+              - label: 'Fecha'
                 name: 'date'
                 widget: 'date'
                 format: 'YYYY-MM-DD'
                 required: true
-              - label: 'Image'
+              - label: 'Imagen'
                 name: 'image'
                 widget: 'object'
                 collapsed: false
                 fields:
                   - { label: 'URL', name: 'url', widget: 'string', required: true }
-                  - { label: 'Alt Text', name: 'alt', widget: 'string', required: true }
-              - label: 'Instructions'
+                  - { label: 'Texto alternativo', name: 'alt', widget: 'string', required: true }
+              - label: 'Instrucciones'
                 name: 'instructions'
                 widget: 'list'
-                field: { label: 'Step', name: 'step', widget: 'text' }
+                field: { label: 'Paso', name: 'step', widget: 'text' }
 
