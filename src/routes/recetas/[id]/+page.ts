@@ -20,5 +20,18 @@ export const load = async ({ params }) => {
 		throw new Error('Recipe not found');
 	}
 
-	return { recipe };
+	const ingredientsData = await import('$lib/test-data/ingredients.json');
+
+	const recipeWithIngredientsData = {
+		...structuredClone(recipe),
+		ingredients: recipe.ingredients.map((ingredient) => {
+			const ingredientFound = ingredientsData.ingredients.find((value) => value.id === ingredient);
+			if (!ingredientFound) {
+				throw new Error('Ingredient not found ' + ingredient);
+			}
+			return { id: ingredient, name: ingredientFound.name };
+		})
+	};
+
+	return { recipe: recipeWithIngredientsData };
 };

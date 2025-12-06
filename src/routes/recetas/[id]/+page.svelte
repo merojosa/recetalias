@@ -20,8 +20,8 @@
 	<section>
 		<h2>Ingredients</h2>
 		<ul>
-			{#each data.recipe.ingredients as ingredient (ingredient)}
-				<li>{ingredient}</li>
+			{#each data.recipe.ingredients as ingredient (ingredient.id)}
+				<li>{ingredient.name}</li>
 			{/each}
 		</ul>
 	</section>
