@@ -4,7 +4,7 @@ import ingredientsData from '$lib/test-data/ingredients.json';
 const validIngredients = ingredientsData.ingredients.map((ingredient) => ingredient.id);
 
 export const RecipeImageSchema = v.object({
-	url: v.pipe(v.string(), v.url()),
+	url: v.string(),
 	alt: v.string()
 });
 

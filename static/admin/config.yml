@@ -63,7 +63,7 @@ collections:
                 widget: 'object'
                 collapsed: false
                 fields:
-                  - { label: 'URL', name: 'url', widget: 'string', required: true }
+                  - { label: 'URL', name: 'url', widget: 'image', required: true }
                   - { label: 'Texto alternativo', name: 'alt', widget: 'string', required: true }
               - label: 'Instrucciones'
                 name: 'instructions'
