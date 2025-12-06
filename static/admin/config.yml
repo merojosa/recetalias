@@ -55,7 +55,9 @@ collections:
                 min: 1
               - label: 'Fecha'
                 name: 'date'
-                widget: 'date'
+                widget: 'datetime'
+                date_format: 'DD/MM/YYYY'
+                time_format: false
                 format: 'YYYY-MM-DD'
                 required: true
               - label: 'Imagen'
