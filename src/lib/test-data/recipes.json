@@ -4,9 +4,17 @@
       "id": "pinto",
       "title": "Pinto clásico",
       "ingredients": [
-        "cilantro",
-        "rice",
-        "beans"
+        {
+          "ingredient": "cilantro"
+        },
+        {
+          "ingredient": "rice",
+          "quantity": "2 tazas"
+        },
+        {
+          "ingredient": "beans",
+          "quantity": "1 taza"
+        }
       ],
       "date": "2025-01-04",
       "image": {
@@ -25,8 +33,14 @@
       "id": "arroz-con-culantro",
       "title": "Arroz con culantro",
       "ingredients": [
-        "cilantro",
-        "rice"
+        {
+          "ingredient": "cilantro",
+          "quantity": "1 manojo"
+        },
+        {
+          "ingredient": "rice",
+          "quantity": "2 tazas"
+        }
       ],
       "date": "2024-12-21",
       "image": {
@@ -43,9 +57,18 @@
       "id": "culantro-con-aire",
       "title": "Culantro con aire",
       "ingredients": [
-        "cilantro",
-        "rice",
-        "beans"
+        {
+          "ingredient": "cilantro",
+          "quantity": "1 manojo"
+        },
+        {
+          "ingredient": "rice",
+          "quantity": "1 taza"
+        },
+        {
+          "ingredient": "beans",
+          "quantity": "1 taza"
+        }
       ],
       "date": "2025-09-13",
       "image": {
@@ -57,6 +80,27 @@
         "Etiam eu elementum libero.",
         "Etiam eu elementum libero. Phasellus gravida, nisl vitae sagittis faucibus, risus leo efficitur enim, quis tristique enim ipsum et nunc. Aliquam dapibus euismod pretium. Etiam vulputate aliquet feugiat.",
         "Praesent eget libero nec sem pretium rhoncus."
+      ]
+    },
+    {
+      "id": "testing-ceneta",
+      "title": "Es un test",
+      "date": "2025-12-08",
+      "ingredients": [
+        {
+          "ingredient": "cilantro"
+        },
+        {
+          "ingredient": "rice",
+          "quantity": "2 tazas de"
+        }
+      ],
+      "image": {
+        "url": "/images/uploads/portada2.jpg",
+        "alt": "Un alt bien bonito"
+      },
+      "instructions": [
+        "Se hace bien bonito y ya."
       ]
     }
   ]

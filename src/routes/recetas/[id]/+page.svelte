@@ -21,7 +21,9 @@
 		<h2 class="text-3xl">Ingredientes</h2>
 		<ul>
 			{#each data.recipe.ingredients as ingredient (ingredient.id)}
-				<li>{ingredient.name}</li>
+				<li>
+					{`${ingredient.quantity ? ingredient.quantity + ' ' + ingredient.name.toLowerCase() : ingredient.name}`}
+				</li>
 			{/each}
 		</ul>
 	</section>

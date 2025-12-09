@@ -45,14 +45,26 @@ collections:
               - { label: 'Título', name: 'title', widget: 'string', required: true }
               - label: 'Ingredientes'
                 name: 'ingredients'
-                widget: 'relation'
-                collection: 'ingredients'
-                file: 'all-ingredients'
-                search_fields: ['ingredients.*.name', 'ingredients.*.id']
-                display_fields: ['ingredients.*.name']
-                value_field: 'ingredients.*.id'
-                multiple: true
+                widget: 'list'
+                label_singular: 'Ingrediente'
+                collapsed: false
+                summary: '{{fields.quantity}} de {{fields.ingredient}}'
                 min: 1
+                fields:
+                  - label: 'Ingrediente'
+                    name: 'ingredient'
+                    widget: 'relation'
+                    collection: 'ingredients'
+                    file: 'all-ingredients'
+                    search_fields: ['ingredients.*.name', 'ingredients.*.id']
+                    display_fields: ['ingredients.*.name']
+                    value_field: 'ingredients.*.id'
+                    required: true
+                  - label: 'Cantidad'
+                    name: 'quantity'
+                    widget: 'string'
+                    required: false
+                    hint: 'Se va a unir con el ingrediente. Eg: Dos tazas de [INGREDIENTE ELEGIDO]'
               - label: 'Fecha'
                 name: 'date'
                 widget: 'datetime'

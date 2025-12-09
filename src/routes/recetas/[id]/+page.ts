@@ -24,12 +24,18 @@ export const load = async ({ params }) => {
 
 	const recipeWithIngredientsData = {
 		...structuredClone(recipe),
-		ingredients: recipe.ingredients.map((ingredient) => {
-			const ingredientFound = ingredientsData.ingredients.find((value) => value.id === ingredient);
+		ingredients: recipe.ingredients.map((ingredientObject) => {
+			const ingredientFound = ingredientsData.ingredients.find(
+				(value) => value.id === ingredientObject.ingredient
+			);
 			if (!ingredientFound) {
-				throw new Error('Ingredient not found ' + ingredient);
+				throw new Error('Ingredient not found ' + ingredientObject);
 			}
-			return { id: ingredient, name: ingredientFound.name };
+			return {
+				id: ingredientObject,
+				name: ingredientFound.name,
+				quantity: ingredientObject.quantity
+			};
 		})
 	};
 
