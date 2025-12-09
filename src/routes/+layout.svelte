@@ -9,11 +9,14 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<header class="py-4 flex justify-center">Recetalias header</header>
+<header class="py-4 flex justify-center font-bold text-4xl">Recetalias</header>
 <main class="max-w-[650px] mx-[20vw] flex-1">
 	{@render children()}
 </main>
-<footer class="py-4 flex justify-center">Recetalias footer</footer>
+<footer class="py-4 flex justify-center flex-col items-center">
+	<p>Recetas por Natalia Díaz Zeledón</p>
+	<p>Desarrollo por Jose Andrés Mejías</p>
+</footer>
 
 <style>
 	:global(body) {
