@@ -51,6 +51,11 @@ collections:
                 summary: '{{fields.quantity}} de {{fields.ingredient}}'
                 min: 1
                 fields:
+                  - label: 'Cantidad'
+                    name: 'quantity'
+                    widget: 'string'
+                    required: false
+                    hint: 'Si escribe la cantidad, se unirá con el ingrediente en minúscula. Ej: "Dos tazas de arroz". Si no escribe cantidad, se pondrá el ingrediente en mayúscula. Ej: "Frijoles'
                   - label: 'Ingrediente'
                     name: 'ingredient'
                     widget: 'relation'
@@ -60,11 +65,6 @@ collections:
                     display_fields: ['ingredients.*.name']
                     value_field: 'ingredients.*.id'
                     required: true
-                  - label: 'Cantidad'
-                    name: 'quantity'
-                    widget: 'string'
-                    required: false
-                    hint: 'Se va a unir con el ingrediente. Eg: Dos tazas de [INGREDIENTE ELEGIDO]'
               - label: 'Fecha'
                 name: 'date'
                 widget: 'datetime'
