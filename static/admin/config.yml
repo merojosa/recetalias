@@ -24,7 +24,6 @@ collections:
             collapsed: true
             summary: '{{fields.name}} ({{fields.id}})'
             fields:
-              - { label: 'ID', name: 'id', widget: 'hidden', required: false }
               - { label: 'Nombre', name: 'name', widget: 'string', required: true }
 
   - name: 'recipes'
