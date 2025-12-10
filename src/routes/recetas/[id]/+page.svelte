@@ -6,7 +6,7 @@
 	<title>{data.recipe.title} - Recetalias</title>
 </svelte:head>
 
-<article class="flex gap-4 flex-col">
+<article class="flex gap-6 flex-col">
 	<section>
 		<h1 class="text-5xl font-bold">{data.recipe.title}</h1>
 		<p>
@@ -18,8 +18,8 @@
 	</section>
 
 	<section>
-		<h2 class="text-3xl">Ingredientes</h2>
-		<ul>
+		<h2 class="text-3xl pb-3">Ingredientes</h2>
+		<ul class="flex flex-col gap-4">
 			{#each data.recipe.ingredients as ingredient (ingredient.id)}
 				<li>
 					{`${ingredient.quantity ? ingredient.quantity + ' ' + ingredient.name.toLowerCase() : ingredient.name}`}
@@ -29,10 +29,10 @@
 	</section>
 
 	<section>
-		<h2 class="text-3xl">Instrucciones</h2>
-		<ol class="flex flex-col gap-4">
-			{#each data.recipe.instructions as instruction, index (instruction)}
-				<li>{index}. {instruction}</li>
+		<h2 class="text-3xl pb-3">Instrucciones</h2>
+		<ol class="flex flex-col gap-4 list-decimal list-inside md:list-outside">
+			{#each data.recipe.instructions as instruction (instruction)}
+				<li>{instruction}</li>
 			{/each}
 		</ol>
 	</section>

@@ -13,7 +13,7 @@
 <header class="py-4 flex justify-center font-bold text-4xl">
 	<a href={resolve('/')}>Recetalias</a>
 </header>
-<main class="max-w-[650px] mx-[5vw] md:mx-[20vw] flex-1 py-6">
+<main class="max-w-[650px] mx-[5vw] md:mx-auto flex-1 py-6">
 	{@render children()}
 </main>
 <footer class="py-4 flex justify-center flex-col items-center">
