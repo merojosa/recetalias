@@ -1,6 +1,7 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
+	import { resolve } from '$app/paths';
 
 	let { children } = $props();
 </script>
@@ -9,8 +10,10 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<header class="py-4 flex justify-center font-bold text-4xl">Recetalias</header>
-<main class="max-w-[650px] mx-[20vw] flex-1">
+<header class="py-4 flex justify-center font-bold text-4xl">
+	<a href={resolve('/')}>Recetalias</a>
+</header>
+<main class="max-w-[650px] mx-[5vw] md:mx-[20vw] flex-1 py-6">
 	{@render children()}
 </main>
 <footer class="py-4 flex justify-center flex-col items-center">

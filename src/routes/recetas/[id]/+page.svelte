@@ -30,9 +30,9 @@
 
 	<section>
 		<h2 class="text-3xl">Instrucciones</h2>
-		<ol class="list-decimal">
-			{#each data.recipe.instructions as instruction (instruction)}
-				<li class="pb-2">{instruction}</li>
+		<ol class="flex flex-col gap-4">
+			{#each data.recipe.instructions as instruction, index (instruction)}
+				<li>{index}. {instruction}</li>
 			{/each}
 		</ol>
 	</section>
