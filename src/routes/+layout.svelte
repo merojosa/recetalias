@@ -17,7 +17,7 @@
 	{@render children()}
 </main>
 <footer class="py-4 flex justify-center flex-col items-center">
-	<p>Recetas por Natalia Díaz Zeledón</p>
+	<p>Recetas por Natalia Díaz</p>
 	<p>Desarrollo por Jose Andrés Mejías</p>
 </footer>
 
