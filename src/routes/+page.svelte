@@ -39,7 +39,11 @@
 	);
 </script>
 
-<section>
+<svelte:head>
+	<title>Búsqueda de recetas de cocina por ingredientes - Recetalias</title>
+</svelte:head>
+
+<section class="w-full">
 	<h1 class="text-2xl">Búsqueda de recetas por ingredientes</h1>
 	<Select.Root type="multiple" bind:value={ingredientsValues}>
 		<Select.Trigger class="w-full">
@@ -55,7 +59,7 @@
 	</Select.Root>
 </section>
 
-<section class="grid grid-cols-1 gap-8 md:grid-cols-2 pt-8">
+<section class="grid grid-cols-1 gap-8 md:grid-cols-2 pt-8 w-full">
 	{#each recipes as recipe (recipe.id)}
 		<article>
 			<a class="flex gap-1 flex-col" href={resolve(`/recetas/${recipe.id}`)}>
