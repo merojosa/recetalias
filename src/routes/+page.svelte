@@ -61,7 +61,7 @@
 	<title>Búsqueda de recetas por ingredientes - Recetalias</title>
 </svelte:head>
 
-<section class="w-full">
+<section class="w-full flex flex-col gap-2">
 	<h1 class="text-2xl">Búsqueda de recetas por ingredientes</h1>
 	<Select.Root type="multiple" bind:value={selectedIngredients}>
 		<Select.Trigger class="w-full">
