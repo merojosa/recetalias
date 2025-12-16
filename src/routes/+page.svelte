@@ -82,13 +82,22 @@
 		<article>
 			<a class="flex gap-1 flex-col" href={resolve(`/recetas/${recipe.id}`)}>
 				{#if recipe.image}
-					<img
-						src={recipe.image.url}
-						alt={recipe.image.alt}
-						class="aspect-4/3 w-full object-cover"
-					/>
+					<div class="relative">
+						<img
+							src={recipe.image.url}
+							alt={recipe.image.alt}
+							class="aspect-4/3 w-full object-cover"
+						/>
+						<div
+							class="absolute bottom-0 left-0 right-0 h-1/2 bg-linear-to-t from-black/80 to-transparent pointer-events-none"
+						></div>
+						<h2
+							class="line-clamp-2 absolute bottom-4 left-0 right-0 text-xl text-white px-4 font-bold"
+						>
+							{recipe.title}
+						</h2>
+					</div>
 				{/if}
-				<h2 class="text-xl my">{recipe.title}</h2>
 			</a>
 		</article>
 	{/each}
