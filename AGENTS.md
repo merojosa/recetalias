@@ -23,3 +23,7 @@
 - **Prerendering**: Use `export const prerender = true` for static routes with `entries` generator
 - **UI Components**: bits-ui based components in `$lib/components/ui/` - prefer composition over props
 - **Utils**: Use `cn()` from `$lib/utils` for conditional class merging (clsx + tailwind-merge)
+
+## Output Format
+
+- **Be extremely concise. Sacrifice grammar for the sake of concision**
