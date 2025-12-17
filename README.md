@@ -1,38 +1,47 @@
-# sv
+# Recetalias
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## About
 
-## Creating a project
+## Tech Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Framework**: [SvelteKit](https://kit.svelte.dev/) with [Svelte 5](https://svelte.dev/) (using runes)
+- **Styling**: [TailwindCSS v4](https://tailwindcss.com/)
+- **UI Components**: [shadcn-svelte](https://www.shadcn-svelte.com/)
+- **Validation**: [Valibot](https://valibot.dev/)
+- **Content Management**: [Decap CMS](https://decapcms.org/)
+- **Type Checking**: TypeScript (strict mode)
 
-```sh
-# create a new project in the current directory
-npx sv create
+## Prerequisites
 
-# create a new project in my-app
-npx sv create my-app
-```
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [pnpm](https://pnpm.io/)
 
-## Developing
+## Getting Started
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Installation
 
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
+Install dependencies:
 
 ```sh
-npm run build
+pnpm install
 ```
 
-You can preview the production build with `npm run preview`.
+### Development
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Start the development server:
+
+```sh
+pnpm dev
+```
+
+The app will be available at `http://localhost:5173` (or the next available port).
+
+### Decap CMS Local Development
+
+To run Decap CMS with a local backend for content management:
+
+```sh
+pnpm decap:local
+```
+
+This starts a local server that allows you to test CMS functionality without deploying.
