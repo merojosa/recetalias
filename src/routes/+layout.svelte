@@ -12,7 +12,7 @@
 </svelte:head>
 
 <header class="p-4 flex justify-center items-center gap-3 font-bold text-4xl">
-	<nav class="w-full flex justify-center p-4 border-4 border-primary">
+	<nav class="w-full flex justify-center p-4">
 		<a href={resolve('/')} class="flex items-center gap-3 *:h-28">
 			<Logo />
 		</a>
