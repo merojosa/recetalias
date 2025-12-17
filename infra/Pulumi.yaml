@@ -1,0 +1,11 @@
+name: recetalias
+description: A TypeScript program to deploy a static website on AWS
+runtime:
+  name: nodejs
+  options:
+    packagemanager: pnpm
+    tsconfig: ../tsconfig.json
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: static-website-aws-typescript

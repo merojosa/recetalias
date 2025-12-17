@@ -1,0 +1,6 @@
+encryptionsalt: v1:IdZQHiSnULA=:v1:7hLE+QkF3E5DDZcz:V1YvZsHbDRscUdhhxcZP1yKLUIxOEA==
+config:
+  aws:region: us-east-1
+  recetalias:errorDocument: index.html
+  recetalias:indexDocument: index.html
+  recetalias:path: ../build

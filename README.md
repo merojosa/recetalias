@@ -45,3 +45,7 @@ pnpm decap:local
 ```
 
 This starts a local server that allows you to test CMS functionality without deploying.
+
+### Deployment
+
+Check `.env.example` to set environment variables to deploy the project.
