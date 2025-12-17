@@ -7,15 +7,19 @@
 - Type check: `pnpm check` (or `pnpm check:watch` for watch mode)
 - Lint: `pnpm lint` (runs Prettier and ESLint)
 - Format: `pnpm format`
+- Preview: `pnpm preview`
 - No test suite configured currently
 
 ## Code Style
 
 - **Formatting**: Tabs for indentation, single quotes, no trailing commas, 100 char width
 - **Imports**: Use `$lib/` path alias for src/lib imports (e.g., `import foo from '$lib/test-data/recipes.json'`)
-- **TypeScript**: Strict mode enabled. Use explicit types, avoid `any`
-- **Files**: `.svelte` for components, `.ts` for logic, `.svx` for markdown components
-- **Naming**: camelCase for variables/functions, PascalCase for components
-- **Framework**: SvelteKit with Svelte 5, TailwindCSS v4, mdsvex for markdown
+- **TypeScript**: Strict mode enabled. Use explicit types, avoid `any`. Export types with `type` keyword
+- **Files**: `.svelte` for components, `.ts` for logic/loaders, `.svx` for markdown components
+- **Naming**: camelCase for variables/functions, PascalCase for components/types/schemas
+- **Framework**: SvelteKit with Svelte 5 (use runes: `$state`, `$derived`, `$effect`), TailwindCSS v4
+- **Validation**: Use Valibot for schemas (import as `import * as v from 'valibot'`)
 - **Error handling**: Throw errors for invalid states (e.g., `throw new Error('Recipe not found')`)
-- **Prerendering**: Use `export const prerender = true` for static routes
+- **Prerendering**: Use `export const prerender = true` for static routes with `entries` generator
+- **UI Components**: bits-ui based components in `$lib/components/ui/` - prefer composition over props
+- **Utils**: Use `cn()` from `$lib/utils` for conditional class merging (clsx + tailwind-merge)
