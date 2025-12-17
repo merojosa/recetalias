@@ -1,8 +1,6 @@
 import * as v from 'valibot';
 import { RecipesFileSchema, type Recipe } from '$lib/schemas/recipe';
-import type { EntryGenerator } from './$types';
-
-export const prerender = true;
+import type { EntryGenerator, PageLoad } from './$types';
 
 export const entries: EntryGenerator = async () => {
 	const recipesData = await import('$lib/test-data/recipes.json');
@@ -10,7 +8,7 @@ export const entries: EntryGenerator = async () => {
 	return validatedData.recipes.map((recipe) => ({ id: recipe.id }));
 };
 
-export const load = async ({ params }) => {
+export const load: PageLoad = async ({ params }) => {
 	const recipesData = await import('$lib/test-data/recipes.json');
 	const validatedData = v.parse(RecipesFileSchema, recipesData.default);
 
