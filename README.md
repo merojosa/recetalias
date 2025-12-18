@@ -49,3 +49,16 @@ This starts a local server that allows you to test CMS functionality without dep
 ### Deployment
 
 Check `.env.example` to set environment variables to deploy the project.
+
+The project will use `AWS_PROFILE` from `.env` to deploy everything. You can execute `pnpm sso` to refresh the credentials (again, it will use `AWS_PROFILE`).
+
+#### Set up AWS profile
+
+```
+aws configure --profile $AWS_PROFILE
+aws configure sso --profile $AWS_PROFILE
+```
+
+## Known issues
+
+- If Pulumi throws an error related to an expired token or credentials, first execute `pnpm sso`. If this doesn't work, you might want to delete `~/.aws/credentials` and try again.
