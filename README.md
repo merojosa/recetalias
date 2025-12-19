@@ -50,7 +50,9 @@ This starts a local server that allows you to test CMS functionality without dep
 
 Check `.env.example` to set environment variables to deploy the project.
 
-The project will use `AWS_PROFILE` from `.env` to deploy everything. You can execute `pnpm sso` to refresh the credentials (again, it will use `AWS_PROFILE`).
+The project will use `AWS_PROFILE` from `.env` to deploy everything. You need to execute `pnpm sso` to refresh the credentials (again, it will use `AWS_PROFILE`).
+
+Since the domain is managed by an external domain registrar, we just create an AWS certification and it will wait until is validated. The www forwading is handled by the external registrar as well.
 
 #### Set up AWS profile
 

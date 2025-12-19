@@ -9,27 +9,16 @@ const errorDocument = config.get('errorDocument') || 'error.html';
 const domainName = 'recetalias.com';
 const subdomainName = `www.${domainName}`;
 
-// Provider for us-east-1 (required for ACM certs used with CloudFront)
-const usEast1Provider = new aws.Provider('us-east-1', { region: 'us-east-1' });
-
 // ACM certificate for the domain
-const certificate = new aws.acm.Certificate(
-	'certificate',
-	{
-		domainName: domainName,
-		subjectAlternativeNames: [subdomainName],
-		validationMethod: 'DNS'
-	},
-	{ provider: usEast1Provider }
-);
+const certificate = new aws.acm.Certificate('certificate', {
+	domainName: domainName,
+	subjectAlternativeNames: [subdomainName],
+	validationMethod: 'DNS'
+});
 
-const certificateValidation = new aws.acm.CertificateValidation(
-	'certificate-validation',
-	{
-		certificateArn: certificate.arn
-	},
-	{ provider: usEast1Provider }
-);
+const certificateValidation = new aws.acm.CertificateValidation('certificate-validation', {
+	certificateArn: certificate.arn
+});
 
 // Create an S3 bucket and configure it as a website.
 const bucket = new aws.s3.Bucket('bucket');
