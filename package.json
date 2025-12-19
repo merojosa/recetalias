@@ -14,7 +14,7 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
 		"sso": "dotenv -e .env -- aws sso login --profile=$AWS_PROFILE",
-		"deploy": "pnpm build && dotenv -e .env -- pulumi up --cwd infra --stack prod"
+		"deploy": "pnpm build && dotenv -e .env -- pulumi up --cwd infra --stack prod --yes"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
