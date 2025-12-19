@@ -2,11 +2,34 @@ import * as pulumi from '@pulumi/pulumi';
 import * as aws from '@pulumi/aws';
 import * as synced_folder from '@pulumi/synced-folder';
 
-// Import the program's configuration settings.
 const config = new pulumi.Config();
 const path = config.get('path') || './www';
 const indexDocument = config.get('indexDocument') || 'index.html';
 const errorDocument = config.get('errorDocument') || 'error.html';
+const domainName = 'recetalias.com';
+const subdomainName = `www.${domainName}`;
+
+// Provider for us-east-1 (required for ACM certs used with CloudFront)
+const usEast1Provider = new aws.Provider('us-east-1', { region: 'us-east-1' });
+
+// ACM certificate for the domain
+const certificate = new aws.acm.Certificate(
+	'certificate',
+	{
+		domainName: domainName,
+		subjectAlternativeNames: [subdomainName],
+		validationMethod: 'DNS'
+	},
+	{ provider: usEast1Provider }
+);
+
+const certificateValidation = new aws.acm.CertificateValidation(
+	'certificate-validation',
+	{
+		certificateArn: certificate.arn
+	},
+	{ provider: usEast1Provider }
+);
 
 // Create an S3 bucket and configure it as a website.
 const bucket = new aws.s3.Bucket('bucket');
@@ -17,7 +40,7 @@ const bucketWebsite = new aws.s3.BucketWebsiteConfiguration('bucketWebsite', {
 	errorDocument: { key: errorDocument }
 });
 
-// Configure ownership controls for the new S3 bucket
+// Ownership controls for the new S3 bucket
 const ownershipControls = new aws.s3.BucketOwnershipControls('ownership-controls', {
 	bucket: bucket.bucket,
 	rule: {
@@ -25,15 +48,14 @@ const ownershipControls = new aws.s3.BucketOwnershipControls('ownership-controls
 	}
 });
 
-// Configure public ACL block on the new S3 bucket
+// Public ACL block on the new S3 bucket
 const publicAccessBlock = new aws.s3.BucketPublicAccessBlock('public-access-block', {
 	bucket: bucket.bucket,
 	blockPublicAcls: false
 });
 
 // Use a synced folder to manage the files of the website.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const bucketFolder = new synced_folder.S3BucketFolder(
+new synced_folder.S3BucketFolder(
 	'bucket-folder',
 	{
 		path: path,
@@ -43,61 +65,71 @@ const bucketFolder = new synced_folder.S3BucketFolder(
 	{ dependsOn: [ownershipControls, publicAccessBlock] }
 );
 
-// Create a CloudFront CDN to distribute and cache the website.
-const cdn = new aws.cloudfront.Distribution('cdn', {
-	enabled: true,
-	origins: [
-		{
-			originId: bucket.arn,
-			domainName: bucketWebsite.websiteEndpoint,
-			customOriginConfig: {
-				originProtocolPolicy: 'http-only',
-				httpPort: 80,
-				httpsPort: 443,
-				originSslProtocols: ['TLSv1.2']
+const cdn = new aws.cloudfront.Distribution(
+	'cdn',
+	{
+		enabled: true,
+		aliases: [domainName, subdomainName],
+		origins: [
+			{
+				originId: bucket.arn,
+				domainName: bucketWebsite.websiteEndpoint,
+				customOriginConfig: {
+					originProtocolPolicy: 'http-only',
+					httpPort: 80,
+					httpsPort: 443,
+					originSslProtocols: ['TLSv1.2']
+				}
 			}
-		}
-	],
-	defaultCacheBehavior: {
-		targetOriginId: bucket.arn,
-		viewerProtocolPolicy: 'redirect-to-https',
-		allowedMethods: ['GET', 'HEAD', 'OPTIONS'],
-		cachedMethods: ['GET', 'HEAD', 'OPTIONS'],
-		defaultTtl: 600,
-		maxTtl: 600,
-		minTtl: 600,
-		forwardedValues: {
-			queryString: true,
-			cookies: {
-				forward: 'all'
+		],
+		defaultCacheBehavior: {
+			targetOriginId: bucket.arn,
+			viewerProtocolPolicy: 'redirect-to-https',
+			allowedMethods: ['GET', 'HEAD', 'OPTIONS'],
+			cachedMethods: ['GET', 'HEAD', 'OPTIONS'],
+			defaultTtl: 600,
+			maxTtl: 600,
+			minTtl: 600,
+			forwardedValues: {
+				queryString: true,
+				cookies: {
+					forward: 'all'
+				}
 			}
-		}
-	},
-	priceClass: 'PriceClass_100',
-	customErrorResponses: [
-		{
-			errorCode: 403,
-			responseCode: 404,
-			responsePagePath: '/404.html'
 		},
-		{
-			errorCode: 404,
-			responseCode: 404,
-			responsePagePath: '/404.html'
-		}
-	],
-	restrictions: {
-		geoRestriction: {
-			restrictionType: 'none'
+		priceClass: 'PriceClass_100',
+		customErrorResponses: [
+			{
+				errorCode: 403,
+				responseCode: 404,
+				responsePagePath: '/404.html'
+			},
+			{
+				errorCode: 404,
+				responseCode: 404,
+				responsePagePath: '/404.html'
+			}
+		],
+		restrictions: {
+			geoRestriction: {
+				restrictionType: 'none'
+			}
+		},
+		viewerCertificate: {
+			acmCertificateArn: certificate.arn,
+			sslSupportMethod: 'sni-only',
+			minimumProtocolVersion: 'TLSv1.2_2021'
 		}
 	},
-	viewerCertificate: {
-		cloudfrontDefaultCertificate: true
-	}
-});
+	{ dependsOn: [certificateValidation] } // Let's wait for DNS validation to complete
+);
 
-// Export the URLs and hostnames of the bucket and distribution.
+// Outputs:
 export const originURL = pulumi.interpolate`http://${bucketWebsite.websiteEndpoint}`;
 export const originHostname = bucketWebsite.websiteEndpoint;
 export const cdnURL = pulumi.interpolate`https://${cdn.domainName}`;
 export const cdnHostname = cdn.domainName;
+export const websiteURL = pulumi.interpolate`https://${domainName}`;
+
+// Export certificate validation records for manual DNS configuration
+export const certificateValidationRecords = certificate.domainValidationOptions;
