@@ -3,7 +3,7 @@
 	data-name="Capa 1"
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
-	viewBox="27 116 320 81"
+	viewBox="25 112 330 85"
 >
 	<defs>
 		<style>
