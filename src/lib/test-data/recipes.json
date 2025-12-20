@@ -99,6 +99,25 @@
       "instructions": [
         "Se hace bien bonito y ya."
       ]
+    },
+    {
+      "id": "esto-es-una-prueba-con-bridge",
+      "title": "Prueba con Bridge",
+      "ingredients": [
+        {
+          "quantity": "1",
+          "ingredient": "broccoli"
+        }
+      ],
+      "date": "2025-12-20",
+      "image": {
+        "url": "/images/uploads/portada1.jpg",
+        "alt": "Una imagen bonita jeje"
+      },
+      "instructions": [
+        "Cocine jeje",
+        "Cocine más jaja"
+      ]
     }
   ]
 }
