@@ -37,5 +37,6 @@ export default defineConfig(
 				svelteConfig
 			}
 		}
-	}
+	},
+	{ ignores: ['src/lib/components/**/*'] }
 );

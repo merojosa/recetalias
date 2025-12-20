@@ -1,8 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: merojosa/recetalias  # Replace with your GitHub username/repo
   branch: main
-
-local_backend: true
+  base_url: https://recetalias.com/api  # Replace with your deployed domain
+  auth_endpoint: auth
 
 media_folder: static/images/uploads
 public_folder: /images/uploads
