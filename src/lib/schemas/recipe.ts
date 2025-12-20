@@ -1,5 +1,5 @@
 import * as v from 'valibot';
-import ingredientsData from '$lib/test-data/ingredients.json';
+import ingredientsData from '$lib/data/ingredients.json';
 
 const validIngredients = ingredientsData.ingredients.map((ingredient) => ingredient.id);
 

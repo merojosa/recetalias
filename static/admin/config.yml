@@ -1,8 +1,28 @@
 backend:
   name: git-gateway
+  repo: merojosa/recetalias
   branch: main
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/9bc0342c-8a88-49de-9424-51dc190b48c1/pkce
+  auth_token_endpoint: /sites/9bc0342c-8a88-49de-9424-51dc190b48c1/token
+  gateway_url: https://gateway.decapbridge.com
 
-local_backend: true
+  commit_messages:
+    create: Create {{collection}} “{{slug}}” - {{author-name}}
+    update: Update {{collection}} “{{slug}}” - {{author-name}}
+    delete: Delete {{collection}} “{{slug}}” - {{author-name}}
+    uploadMedia: Upload “{{path}}” - {{author-name}}
+    deleteMedia: Delete “{{path}}” - {{author-name}}
+    openAuthoring: Message {{message}} - {{author-name}}
+
+auth:
+  email_claim: email
+  first_name_claim: first_name
+  last_name_claim: last_name
+  avatar_url_claim: avatar_url
+
+site_url: https://recetalias.com
 
 media_folder: static/images/uploads
 public_folder: /images/uploads
@@ -15,7 +35,7 @@ collections:
     files:
       - name: 'all-ingredients'
         label: 'Todos los ingredientes'
-        file: 'src/lib/test-data/ingredients.json'
+        file: 'src/lib/data/ingredients.json'
         fields:
           - label: 'Ingredientes'
             name: 'ingredients'
@@ -31,7 +51,7 @@ collections:
     files:
       - name: 'all-recipes'
         label: 'Todas las recetas'
-        file: 'src/lib/test-data/recipes.json'
+        file: 'src/lib/data/recipes.json'
         fields:
           - label: 'Recetas'
             name: 'recipes'

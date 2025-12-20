@@ -1,6 +1,6 @@
 <script lang="ts">
-	import recipesData from '$lib/test-data/recipes.json';
-	import ingredientsData from '$lib/test-data/ingredients.json';
+	import recipesData from '$lib/data/recipes.json';
+	import ingredientsData from '$lib/data/ingredients.json';
 	import { resolve } from '$app/paths';
 	import * as Select from '$lib/components/ui/select/index';
 
