@@ -44,5 +44,5 @@ jobs:
         env:
           PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
         run: |
-          pulumi login --local
+          pulumi login 's3://recetalias-pulumi-state?region=us-east-1'
           pnpm run deploy

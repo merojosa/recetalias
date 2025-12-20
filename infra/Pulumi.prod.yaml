@@ -1,4 +1,4 @@
-encryptionsalt: v1:IdZQHiSnULA=:v1:7hLE+QkF3E5DDZcz:V1YvZsHbDRscUdhhxcZP1yKLUIxOEA==
+encryptionsalt: v1:1bNyokdZdk8=:v1:qV7O5Au0mL5z8h+Q:1RUOBEdqphUT6KWNvMoQQ3Asa9XeSQ==
 config:
   aws:region: us-east-1
   recetalias:errorDocument: index.html
