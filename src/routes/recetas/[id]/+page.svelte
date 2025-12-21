@@ -8,7 +8,7 @@
 
 <article class="flex gap-6 flex-col">
 	<section>
-		<h1 class="text-5xl font-bold">{data.recipe.title}</h1>
+		<h1 class="text-3xl md:text-5xl font-bold">{data.recipe.title}</h1>
 		<p>
 			Publicado el <time datetime={data.recipe.date}
 				>{new Date(data.recipe.date).toLocaleDateString()}</time
@@ -18,7 +18,7 @@
 	</section>
 
 	<section>
-		<h2 class="text-3xl pb-3">Ingredientes</h2>
+		<h2 class="text-2xl md:text-3xl pb-3">Ingredientes</h2>
 		<ul class="flex flex-col gap-4">
 			{#each data.recipe.ingredients as ingredient (ingredient.id)}
 				<li>
@@ -29,7 +29,7 @@
 	</section>
 
 	<section>
-		<h2 class="text-3xl pb-3">Instrucciones</h2>
+		<h2 class="text-2xl md:text-3xl pb-3">Instrucciones</h2>
 		<ol class="flex flex-col gap-4 list-decimal list-inside md:list-outside">
 			{#each data.recipe.instructions as instruction (instruction)}
 				<li>{instruction}</li>
