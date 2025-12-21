@@ -8,28 +8,6 @@
 	<body>
 	<!-- Include the script that builds the page and powers Decap CMS -->
 	<script src="https://unpkg.com/decap-cms@^3.9.0/dist/decap-cms.js"></script>
-	<style>
-		.ci-status-widget {
-			padding: 16px;
-			background: #f5f5f5;
-			border-radius: 4px;
-			margin: 16px 0;
-		}
-		.ci-status-widget h3 {
-			margin: 0 0 12px 0;
-			font-size: 14px;
-			font-weight: 600;
-			color: #333;
-		}
-		.ci-status-widget img {
-			display: block;
-		}
-		.ci-status-widget p {
-			margin: 8px 0 0 0;
-			font-size: 12px;
-			color: #666;
-		}
-	</style>
 	<script>
 		/**
 		 * Generate a URL-friendly slug from a string
@@ -160,31 +138,6 @@
 				}
 			}
 		});
-
-		// Register custom widget to display CI status
-		const CIStatusControl = createClass({
-			render() {
-				return h(
-					'div',
-					{ className: 'ci-status-widget' },
-					h('h3', {}, 'Estado del despliegue'),
-					h('img', {
-						src: 'https://github.com/merojosa/recetalias/actions/workflows/ci.yml/badge.svg?t=' + Date.now(),
-						alt: 'CI Status',
-						style: { maxWidth: '200px' }
-					}),
-					h('p', {}, 'El badge se actualiza automáticamente para mostrar el estado del último despliegue.')
-				);
-			}
-		});
-
-		const CIStatusPreview = createClass({
-			render() {
-				return h('div', {}, 'Estado del despliegue mostrado arriba');
-			}
-		});
-
-		CMS.registerWidget('ci-status', CIStatusControl, CIStatusPreview);
 		</script>
 	</body>
 </html>

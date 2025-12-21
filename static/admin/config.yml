@@ -55,10 +55,6 @@ collections:
         label: 'Todas las recetas'
         file: 'src/lib/data/recipes.json'
         fields:
-          - label: 'Estado del Despliegue'
-            name: 'ci_status'
-            widget: 'ci-status'
-            required: false
           - label: 'Recetas'
             name: 'recipes'
             widget: 'list'
