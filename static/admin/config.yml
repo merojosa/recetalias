@@ -22,7 +22,7 @@ auth:
   last_name_claim: last_name
   avatar_url_claim: avatar_url
 
-logo_url: https://decapbridge.com/decapcms-with-bridge.svg
+# logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 
 site_url: https://recetalias.com
 
