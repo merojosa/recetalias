@@ -45,7 +45,7 @@ const publicAccessBlock = new aws.s3.BucketPublicAccessBlock('public-access-bloc
 });
 
 // Use a synced folder to manage the files of the website.
-new synced_folder.S3BucketFolder(
+const bucketFolder = new synced_folder.S3BucketFolder(
 	'bucket-folder',
 	{
 		path: path,
@@ -114,10 +114,14 @@ const cdn = new aws.cloudfront.Distribution(
 	{ dependsOn: [certificateValidation] } // Let's wait for DNS validation to complete
 );
 
-new command.local.Command('invalidate-cache', {
-	create: pulumi.interpolate`aws cloudfront create-invalidation --distribution-id ${cdn.id} --paths "/*"`,
-	triggers: [Date.now()]
-});
+new command.local.Command(
+	'invalidate-cache',
+	{
+		create: pulumi.interpolate`aws cloudfront create-invalidation --distribution-id ${cdn.id} --paths "/*"`,
+		triggers: [Date.now()]
+	},
+	{ dependsOn: [bucketFolder, cdn] }
+);
 
 // Outputs:
 export const websiteURL = pulumi.interpolate`https://${domainName}`;
