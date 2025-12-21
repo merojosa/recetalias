@@ -1,6 +1,7 @@
 import * as pulumi from '@pulumi/pulumi';
 import * as aws from '@pulumi/aws';
 import * as synced_folder from '@pulumi/synced-folder';
+import * as command from '@pulumi/command';
 
 const config = new pulumi.Config();
 const path = config.get('path') || './www';
@@ -113,12 +114,10 @@ const cdn = new aws.cloudfront.Distribution(
 	{ dependsOn: [certificateValidation] } // Let's wait for DNS validation to complete
 );
 
-// Outputs:
-export const originURL = pulumi.interpolate`http://${bucketWebsite.websiteEndpoint}`;
-export const originHostname = bucketWebsite.websiteEndpoint;
-export const cdnURL = pulumi.interpolate`https://${cdn.domainName}`;
-export const cdnHostname = cdn.domainName;
-export const websiteURL = pulumi.interpolate`https://${domainName}`;
+new command.local.Command('invalidate-cache', {
+	create: pulumi.interpolate`aws cloudfront create-invalidation --distribution-id ${cdn.id} --paths "/*"`,
+	triggers: [Date.now()]
+});
 
-// Export certificate validation records for manual DNS configuration
-export const certificateValidationRecords = certificate.domainValidationOptions;
+// Outputs:
+export const websiteURL = pulumi.interpolate`https://${domainName}`;
