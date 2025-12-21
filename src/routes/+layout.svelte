@@ -11,14 +11,14 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<header class="p-4 flex justify-center items-center gap-3 font-bold text-4xl">
-	<nav class="w-full flex justify-center p-4">
-		<a href={resolve('/')} class="flex items-center gap-3 *:h-28">
+<header class="p-4 md:p-8 flex justify-center items-center gap-3 font-bold text-4xl">
+	<nav class="w-full flex justify-center">
+		<a href={resolve('/')} class="flex items-center gap-3 *:h-20 sm:*:h-24 md:*:h-28">
 			<Logo />
 		</a>
 	</nav>
 </header>
-<main class="min-w-[650px] max-w-[650px] mx-[5vw] md:mx-auto flex-1 py-6">
+<main class="md:min-w-[650px] md:max-w-[650px] mx-[5vw] md:mx-auto flex-1 py-6">
 	{@render children()}
 </main>
 <footer class="bg-primary text-white py-4 flex justify-center flex-col items-center">
