@@ -18,7 +18,7 @@
 		</a>
 	</nav>
 </header>
-<main class="md:min-w-[650px] md:max-w-[650px] mx-[5vw] md:mx-auto flex-1 py-6">
+<main class="md:min-w-[650px] md:max-w-[650px] mx-[5vw] md:mx-auto flex-1 py-6 bg-amber-600">
 	{@render children()}
 </main>
 <footer class="bg-primary text-white py-4 flex justify-center flex-col items-center">
