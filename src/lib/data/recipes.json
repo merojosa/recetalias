@@ -81,24 +81,6 @@
         "Etiam eu elementum libero. Phasellus gravida, nisl vitae sagittis faucibus, risus leo efficitur enim, quis tristique enim ipsum et nunc. Aliquam dapibus euismod pretium. Etiam vulputate aliquet feugiat.",
         "Praesent eget libero nec sem pretium rhoncus."
       ]
-    },
-    {
-      "id": "testing-ceneta",
-      "title": "Es un test",
-      "date": "2025-12-08",
-      "ingredients": [
-        {
-          "ingredient": "rice",
-          "quantity": "2 tazas de"
-        }
-      ],
-      "image": {
-        "url": "/images/uploads/portada2.jpg",
-        "alt": "Un alt bien bonito"
-      },
-      "instructions": [
-        "Se hace bien bonito y ya."
-      ]
     }
   ]
 }
