@@ -15,7 +15,7 @@
 		"lint": "prettier --check . && eslint .",
 		"sso": "dotenv -e .env -- aws sso login --profile=$AWS_PROFILE",
 		"pulumi:login": "dotenv -e .env -- pulumi login 's3://recetalias-pulumi-state?region=us-east-1'",
-		"deploy": "pnpm build && dotenv -e .env -- pulumi up --cwd infra --stack prod --yes"
+		"deploy": "dotenv -e .env -- pulumi up --cwd infra --stack prod --yes --logtostderr -v=0"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
