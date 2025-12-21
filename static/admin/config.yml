@@ -4,8 +4,8 @@ backend:
   branch: main
   auth_type: pkce
   base_url: https://auth.decapbridge.com
-  auth_endpoint: /sites/9bc0342c-8a88-49de-9424-51dc190b48c1/pkce
-  auth_token_endpoint: /sites/9bc0342c-8a88-49de-9424-51dc190b48c1/token
+  auth_endpoint: /sites/53190bf2-13a1-492b-ba15-2c6cd889992a/pkce
+  auth_token_endpoint: /sites/53190bf2-13a1-492b-ba15-2c6cd889992a/token
   gateway_url: https://gateway.decapbridge.com
 
   commit_messages:
@@ -21,6 +21,8 @@ auth:
   first_name_claim: first_name
   last_name_claim: last_name
   avatar_url_claim: avatar_url
+
+logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 
 site_url: https://recetalias.com
 
