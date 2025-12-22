@@ -55,6 +55,26 @@ const bucketFolder = new synced_folder.S3BucketFolder(
 	{ dependsOn: [ownershipControls, publicAccessBlock] }
 );
 
+// CloudFront Function to append /index.html to directory paths
+const urlRewriteFunction = new aws.cloudfront.Function('url-rewrite-function', {
+	runtime: 'cloudfront-js-2.0',
+	code: `function handler(event) {
+	var request = event.request;
+	var uri = request.uri;
+	
+	// Check if URI ends with '/'
+	if (uri.endsWith('/')) {
+		request.uri += 'index.html';
+	}
+	// Check if URI has no file extension
+	else if (!uri.includes('.')) {
+		request.uri += '/index.html';
+	}
+	
+	return request;
+}`
+});
+
 const cdn = new aws.cloudfront.Distribution(
 	'cdn',
 	{
@@ -85,7 +105,13 @@ const cdn = new aws.cloudfront.Distribution(
 				cookies: {
 					forward: 'all'
 				}
-			}
+			},
+			functionAssociations: [
+				{
+					eventType: 'viewer-request',
+					functionArn: urlRewriteFunction.arn
+				}
+			]
 		},
 		priceClass: 'PriceClass_100',
 		customErrorResponses: [
