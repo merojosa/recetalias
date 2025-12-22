@@ -1,8 +1,9 @@
 <script lang="ts">
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
+	import favicon from '$lib/assets/favicon.svg?url';
 	import { resolve } from '$app/paths';
 	import Logo from '$lib/assets/logo.svelte';
+	import Logo2 from '$lib/assets/favicon.svg';
 
 	let { children } = $props();
 </script>
@@ -21,13 +22,23 @@
 <main class="md:min-w-[650px] md:max-w-[650px] mx-[5vw] md:mx-auto flex-1 py-6">
 	{@render children()}
 </main>
-<footer class="bg-primary text-white py-4 flex justify-center flex-col items-center">
-	<p>Recetas por Natalia Díaz</p>
-	<p>
-		Desarrollo por <a class="hover:underline" target="_blank" href="https://merojosa.dev"
-			>Jose Andrés Mejías</a
-		>
-	</p>
+<footer class="bg-primary text-white py-8 px-20 flex justify-evenly flex-row items-center">
+	<div class="flex items-center gap-2">
+		<img class="h-30" src={Logo2} alt="Logo secundario de Recetalias" />
+		<div>
+			<p class="text-3xl">Recetalias</p>
+			<p class="h-fit">© {new Date().getFullYear()}. Todos los derechos reservados.</p>
+		</div>
+	</div>
+
+	<div class="flex flex-col text-center">
+		<p>Recetas por Natalia Díaz</p>
+		<p>
+			Desarrollo por <a class="hover:underline" target="_blank" href="https://merojosa.dev"
+				>Jose Andrés Mejías</a
+			>
+		</p>
+	</div>
 </footer>
 
 <style>

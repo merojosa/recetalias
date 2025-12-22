@@ -6,67 +6,6 @@
 	viewBox="25 112 330 85"
 >
 	<defs>
-		<style>
-			.cls-1 {
-				fill: none;
-			}
-
-			.cls-2 {
-				fill: #777b90;
-			}
-
-			.cls-3 {
-				fill: #314523;
-			}
-
-			.cls-4 {
-				isolation: isolate;
-			}
-
-			.cls-5 {
-				fill: #6d9651;
-			}
-
-			.cls-6 {
-				clip-path: url(#clippath-1);
-			}
-
-			.cls-7 {
-				clip-path: url(#clippath-3);
-			}
-
-			.cls-8 {
-				clip-path: url(#clippath-4);
-			}
-
-			.cls-9 {
-				clip-path: url(#clippath-2);
-			}
-
-			.cls-10 {
-				fill: #60647e;
-			}
-
-			.cls-11 {
-				fill: #72768d;
-			}
-
-			.cls-12 {
-				fill: #7f8297;
-			}
-
-			.cls-13 {
-				opacity: 0;
-			}
-
-			.cls-14 {
-				clip-path: url(#clippath);
-			}
-
-			.cls-15 {
-				fill: #66914a;
-			}
-		</style>
 		<clipPath id="clippath">
 			<rect class="cls-1" width="375" height="375" />
 		</clipPath>
@@ -182,3 +121,65 @@
 	<rect class="cls-13" x="87.42" y="111.5" width="30.18" height="20.53" />
 	<rect class="cls-13" x="137.74" y="207.12" width="61.56" height="61.56" />
 </svg>
+
+<style>
+	.cls-1 {
+		fill: none;
+	}
+
+	.cls-2 {
+		fill: #777b90;
+	}
+
+	.cls-3 {
+		fill: #314523;
+	}
+
+	.cls-4 {
+		isolation: isolate;
+	}
+
+	.cls-5 {
+		fill: #6d9651;
+	}
+
+	.cls-6 {
+		clip-path: url(#clippath-1);
+	}
+
+	.cls-7 {
+		clip-path: url(#clippath-3);
+	}
+
+	.cls-8 {
+		clip-path: url(#clippath-4);
+	}
+
+	.cls-9 {
+		clip-path: url(#clippath-2);
+	}
+
+	.cls-10 {
+		fill: #60647e;
+	}
+
+	.cls-11 {
+		fill: #72768d;
+	}
+
+	.cls-12 {
+		fill: #7f8297;
+	}
+
+	.cls-13 {
+		opacity: 0;
+	}
+
+	.cls-14 {
+		clip-path: url(#clippath);
+	}
+
+	.cls-15 {
+		fill: #66914a;
+	}
+</style>
