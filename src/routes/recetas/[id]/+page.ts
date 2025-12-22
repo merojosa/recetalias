@@ -3,8 +3,6 @@ import { error } from '@sveltejs/kit';
 import { RecipesFileSchema, type Recipe } from '$lib/schemas/recipe';
 import type { EntryGenerator, PageLoad } from './$types';
 
-export const trailingSlash = 'never';
-
 export const entries: EntryGenerator = async () => {
 	const recipesData = await import('$lib/data/recipes.json');
 	const validatedData = v.parse(RecipesFileSchema, recipesData.default);
