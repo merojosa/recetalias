@@ -1,4 +1,5 @@
 import * as v from 'valibot';
+import { error } from '@sveltejs/kit';
 import { RecipesFileSchema, type Recipe } from '$lib/schemas/recipe';
 import type { EntryGenerator, PageLoad } from './$types';
 
@@ -15,7 +16,7 @@ export const load: PageLoad = async ({ params }) => {
 	const recipe = validatedData.recipes.find((r) => r.id === params.id) as Recipe | undefined;
 
 	if (!recipe) {
-		throw new Error('Recipe not found');
+		error(404, 'Recipe not found');
 	}
 
 	const ingredientsData = await import('$lib/data/ingredients.json');
@@ -27,7 +28,7 @@ export const load: PageLoad = async ({ params }) => {
 				(value) => value.id === ingredientObject.ingredient
 			);
 			if (!ingredientFound) {
-				throw new Error('Ingredient not found ' + ingredientObject);
+				error(500, 'Ingredient not found');
 			}
 			return {
 				id: ingredientObject,
