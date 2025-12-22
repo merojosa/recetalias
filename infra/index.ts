@@ -55,7 +55,7 @@ const bucketFolder = new synced_folder.S3BucketFolder(
 	{ dependsOn: [ownershipControls, publicAccessBlock] }
 );
 
-// CloudFront Function to append /index.html to directory paths
+// CloudFront Function to append .html to paths without extensions
 const urlRewriteFunction = new aws.cloudfront.Function('url-rewrite-function', {
 	runtime: 'cloudfront-js-2.0',
 	code: `function handler(event) {
@@ -68,7 +68,7 @@ const urlRewriteFunction = new aws.cloudfront.Function('url-rewrite-function', {
 	}
 	// Check if URI has no file extension
 	else if (!uri.includes('.')) {
-		request.uri += '/index.html';
+		request.uri += '.html';
 	}
 	
 	return request;
