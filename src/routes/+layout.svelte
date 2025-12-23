@@ -22,16 +22,20 @@
 <main class="md:min-w-162.5 md:max-w-162.5 mx-[5vw] md:mx-auto flex-1 py-6">
 	{@render children()}
 </main>
-<footer class="bg-primary text-white py-8 px-20 flex justify-evenly flex-row items-center">
-	<div class="flex items-center gap-2">
+<footer
+	class="bg-primary gap-2 text-white py-8 px-6 md:px-20 flex justify-evenly flex-col sm:flex-row items-center"
+>
+	<div class="flex justify-center sm:justify-start items-center gap-2 w-full flex-1">
 		<img class="h-30" src={Logo2} alt="Logo secundario de Recetalias" />
 		<div>
 			<p class="text-3xl">Recetalias</p>
-			<p class="h-fit">© {new Date().getFullYear()}. Todos los derechos reservados.</p>
+			<p class="text-sm md:text-base h-fit">
+				© {new Date().getFullYear()}. Todos los derechos reservados.
+			</p>
 		</div>
 	</div>
 
-	<div class="flex flex-col text-center">
+	<div class="flex justify-center flex-col pl-4 sm:pl-0 sm:text-center flex-1 text-sm md:text-base">
 		<p>Recetas por Natalia Díaz</p>
 		<p>
 			Desarrollo por <a class="hover:underline" target="_blank" href="https://merojosa.dev"
