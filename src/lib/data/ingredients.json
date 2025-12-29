@@ -1,20 +1,20 @@
 {
   "ingredients": [
     {
-      "id": "cilantro",
-      "name": "Culantro"
+      "name": "Té negro",
+      "id": "te-negro"
     },
     {
-      "id": "rice",
-      "name": "Arroz"
+      "name": "Limón",
+      "id": "limon"
     },
     {
-      "id": "beans",
-      "name": "Frijoles"
+      "name": "Miel",
+      "id": "miel"
     },
     {
-      "id": "broccoli",
-      "name": "Brócoli"
+      "name": "Azúcar ",
+      "id": "azucar"
     }
   ]
 }
