@@ -1,3 +1,37 @@
 {
-  "recipes": []
+  "recipes": [
+    {
+      "date": "2025-12-29",
+      "title": "Té negro con limón, estilo sureño",
+      "ingredients": [
+        {
+          "ingredient": "te-negro",
+          "quantity": "5 bolsitas de"
+        },
+        {
+          "quantity": "2 cucharadas de",
+          "ingredient": "azucar"
+        },
+        {
+          "quantity": "2 cucharadas",
+          "ingredient": "miel"
+        },
+        {
+          "ingredient": "limon",
+          "quantity": "1"
+        }
+      ],
+      "instructions": [
+        "Con las cinco bolsitas de té negro, seguir el procedimiento usual para hacer té caliente en un recipiente. Es importante que el té no se descanse más de 10 minutos en el agua caliente, pues la mezcla puede tornarse amarga entre más tiempo esté el té disolviéndose en agua caliente.",
+        "Mientras el té está aún caliente, endulzar con las dos cucharadas de azúcar y las dos cucharadas de miel. Se pueden ajustar las proporciones al gusto. ",
+        "Después de enfriar el té, añadir el jugo de medio limón y cortar en rodajitas la otra mitad de la fruta. Añadir las rodajas de limón al té, de manera que se cree una infusión. ",
+        "Refrigerar la mezcla del té dulce y limón, al menos tres horas para que el limón suelte su sabor. ",
+        "Servir con abundante hielo en vasos altos. "
+      ],
+      "image": {
+        "url": "/images/uploads/te_negro.jpg",
+        "alt": "Una mano sostiene una cuchara con miel y la echa sobre un recipiente de vidrio con té negro."
+      }
+    }
+  ]
 }
