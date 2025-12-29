@@ -14,7 +14,11 @@
 				>{new Date(data.recipe.date).toLocaleDateString()}</time
 			>
 		</p>
-		<img src={data.recipe.image.url} alt={data.recipe.image.alt} />
+		<img class="py-6" src={data.recipe.image.url} alt={data.recipe.image.alt} />
+
+		{#if data.recipe.description}
+			<p>{data.recipe.description}</p>
+		{/if}
 	</section>
 
 	<section>
