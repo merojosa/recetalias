@@ -6,20 +6,20 @@
 			"title": "Té negro con limón, estilo sureño",
 			"ingredients": [
 				{
-					"ingredient": "te-negro",
-					"quantity": "5 bolsitas de"
+					"ingredientId": "te-negro",
+					"ingredientDetail": "5 bolsitas de té negro"
 				},
 				{
-					"quantity": "2 cucharadas de",
-					"ingredient": "azucar"
+					"ingredientDetail": "2 cucharadas de azúcar",
+					"ingredientId": "azucar"
 				},
 				{
-					"quantity": "2 cucharadas de",
-					"ingredient": "miel"
+					"ingredientDetail": "2 cucharadas de miel",
+					"ingredientId": "miel"
 				},
 				{
-					"ingredient": "limon",
-					"quantity": "1"
+					"ingredientId": "limon",
+					"ingredientDetail": "1 limón"
 				}
 			],
 			"instructions": [

@@ -9,8 +9,8 @@ export const RecipeImageSchema = v.object({
 });
 
 export const RecipeIngredientSchema = v.object({
-	ingredient: v.pipe(v.string(), v.picklist(validIngredients)),
-	quantity: v.optional(v.pipe(v.string(), v.minLength(1, 'Quantity cannot be empty')))
+	ingredientId: v.pipe(v.string(), v.picklist(validIngredients)),
+	ingredientDetail: v.string()
 });
 
 export const RecipeSchema = v.object({
@@ -21,7 +21,7 @@ export const RecipeSchema = v.object({
 		v.array(RecipeIngredientSchema),
 		v.minLength(1, 'At least one ingredient is required'),
 		v.check(
-			(arr) => new Set(arr.map((i) => i.ingredient)).size === arr.length,
+			(arr) => new Set(arr.map((i) => i.ingredientId)).size === arr.length,
 			'Ingredients must not contain duplicates'
 		)
 	),

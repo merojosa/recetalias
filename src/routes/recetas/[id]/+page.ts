@@ -19,24 +19,5 @@ export const load: PageLoad = async ({ params }) => {
 		error(404, 'Recipe not found');
 	}
 
-	const ingredientsData = await import('$lib/data/ingredients.json');
-
-	const recipeWithIngredientsData = {
-		...structuredClone(recipe),
-		ingredients: recipe.ingredients.map((ingredientObject) => {
-			const ingredientFound = ingredientsData.ingredients.find(
-				(value) => value.id === ingredientObject.ingredient
-			);
-			if (!ingredientFound) {
-				error(500, 'Ingredient not found');
-			}
-			return {
-				id: ingredientObject,
-				name: ingredientFound.name,
-				quantity: ingredientObject.quantity
-			};
-		})
-	};
-
-	return { recipe: recipeWithIngredientsData };
+	return { recipe };
 };

@@ -24,10 +24,8 @@
 	<section>
 		<h2 class="text-2xl md:text-3xl pb-3">Ingredientes</h2>
 		<ul class="flex flex-col gap-4">
-			{#each data.recipe.ingredients as ingredient (ingredient.id)}
-				<li>
-					{`${ingredient.quantity ? ingredient.quantity + ' ' + ingredient.name.toLowerCase() : ingredient.name}`}
-				</li>
+			{#each data.recipe.ingredients as ingredient (`${ingredient.ingredientDetail}-${ingredient.ingredientId}`)}
+				<li>{ingredient.ingredientDetail}</li>
 			{/each}
 		</ul>
 	</section>
