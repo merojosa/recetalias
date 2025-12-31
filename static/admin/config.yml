@@ -73,11 +73,6 @@ collections:
                 summary: '{{fields.ingredientDetail}}'
                 min: 1
                 fields:
-                  - label: 'Ingrediente'
-                    name: 'ingredientDetail'
-                    widget: 'string'
-                    required: true
-                    hint: 'Ejemplo: 2 cucharadas de sal'
                   - label: 'Ingrediente para búsqueda (no se va a incluir en la entrada del blog)'
                     name: 'ingredientId'
                     widget: 'relation'
@@ -88,6 +83,11 @@ collections:
                     value_field: 'ingredients.*.id'
                     required: true
                     hint: 'Este campo se va a usar únicamente para la búsqueda, no se visualiza en la entrada del blog'
+                  - label: 'Ingrediente'
+                    name: 'ingredientDetail'
+                    widget: 'string'
+                    required: true
+                    hint: 'Ejemplo: 2 cucharadas de sal'
               - label: 'Fecha'
                 name: 'date'
                 widget: 'datetime'
