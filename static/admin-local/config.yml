@@ -49,7 +49,7 @@ collections:
                 widget: 'list'
                 label_singular: 'Ingrediente'
                 collapsed: false
-                summary: '{{fields.quantity}} de {{fields.ingredient}}'
+                summary: '{{fields.ingredientDetail}}'
                 min: 1
                 fields:
                   - label: 'Ingrediente'
