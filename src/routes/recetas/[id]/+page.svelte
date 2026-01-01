@@ -8,7 +8,7 @@
 
 <article class="flex gap-6 flex-col">
 	<section>
-		<h1 class="text-3xl md:text-5xl font-bold">{data.recipe.title}</h1>
+		<h1 class="text-3xl md:text-4xl font-bold leading-tight">{data.recipe.title} jejee</h1>
 		<p>
 			Publicado el <time datetime={data.recipe.date}
 				>{new Date(data.recipe.date).toLocaleDateString()}</time
