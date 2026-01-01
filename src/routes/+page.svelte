@@ -26,7 +26,7 @@
 			) {
 				const foundSelectedIngredient = recipe.ingredients.find(
 					(recipeIngredient) =>
-						recipeIngredient.ingredient === selectedIngredients[ingredientsValuesIndex]
+						recipeIngredient.ingredientId === selectedIngredients[ingredientsValuesIndex]
 				);
 
 				if (!foundSelectedIngredient) {
