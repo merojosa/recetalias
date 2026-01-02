@@ -4,7 +4,7 @@ test.describe('Homepage', () => {
 	test('displays recipes', async ({ page }) => {
 		await page.goto('/');
 
-		await expect(page).toHaveTitle(/Búsqueda de recetas por ingredientes - jejeRecetalias/);
+		await expect(page).toHaveTitle(/Búsqueda de recetas por ingredientes - Recetalias/);
 		await expect(page.getByRole('heading', { level: 1 })).toHaveText(
 			'Búsqueda de recetas por ingredientes'
 		);
