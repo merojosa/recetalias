@@ -4,11 +4,12 @@
 
 - Dev: `pnpm dev` (or `npm run dev`)
 - Build: `pnpm build`
-- Type check: `pnpm check` (or `pnpm check:watch` for watch mode)
-- Lint: `pnpm lint` (runs Prettier and ESLint)
+- Type check: `svelte-check --tsconfig ./tsconfig.json`
+- Lint: `pnpm lint` (runs svelte-check, Prettier, and ESLint)
 - Format: `pnpm format`
 - Preview: `pnpm preview`
-- No test suite configured currently
+- Test: `pnpm test` or `pnpm test:e2e` (Playwright E2E tests)
+- Test single file: `pnpm playwright test e2e/demo.test.ts`
 
 ## Code Style
 
