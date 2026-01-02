@@ -14,13 +14,16 @@
 		"sso": "dotenv -e .env -- aws sso login --profile=$AWS_PROFILE",
 		"pulumi:login": "dotenv -e .env -- pulumi login 's3://recetalias-pulumi-state?region=us-east-1'",
 		"deploy": "dotenv -e .env -- pulumi up --cwd infra --stack prod --yes --non-interactive",
-		"deploy:local": "pnpm pulumi:login && dotenv -e .env -- pulumi up --cwd infra --stack prod --yes --non-interactive"
+		"deploy:local": "pnpm pulumi:login && dotenv -e .env -- pulumi up --cwd infra --stack prod --yes --non-interactive",
+		"test:e2e": "playwright test",
+		"test": "pnpm run test:e2e"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.1",
 		"@eslint/js": "^9.39.2",
 		"@internationalized/date": "^3.10.1",
 		"@lucide/svelte": "^0.544.0",
+		"@playwright/test": "^1.57.0",
 		"@pulumi/aws": "^7.15.0",
 		"@pulumi/command": "^1.1.3",
 		"@pulumi/pulumi": "^3.214.0",
