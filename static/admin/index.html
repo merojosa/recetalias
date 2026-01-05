@@ -24,6 +24,36 @@
 				.replace(/-+/g, '-'); // Replace multiple - with single -
 		}
 
+		// Helper function to recursively trim all string fields
+		function trimAllFields(obj) {
+			if (typeof obj === 'string') {
+				return obj.trim();
+			}
+			if (Array.isArray(obj)) {
+				return obj.map(trimAllFields);
+			}
+			if (obj && typeof obj === 'object') {
+				const trimmed = {};
+				for (const key in obj) {
+					if (obj.hasOwnProperty(key)) {
+						trimmed[key] = trimAllFields(obj[key]);
+					}
+				}
+				return trimmed;
+			}
+			return obj;
+		}
+
+		// Trim all string fields before saving
+		CMS.registerEventListener({
+			name: 'preSave',
+			handler: ({ entry }) => {
+				const data = entry.get('data');
+				const trimmedData = trimAllFields(data.toJS ? data.toJS() : data);
+				return entry.get('data').merge(trimmedData);
+			}
+		});
+
 		// Auto-generate ingredient IDs from name
 		CMS.registerEventListener({
 			name: 'preSave',
