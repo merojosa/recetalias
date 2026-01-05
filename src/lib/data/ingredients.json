@@ -15,6 +15,50 @@
     {
       "name": "Azúcar ",
       "id": "azucar"
+    },
+    {
+      "name": "Harina",
+      "id": "harina"
+    },
+    {
+      "name": "Polvo de hornear",
+      "id": "polvo-de-hornear"
+    },
+    {
+      "name": "Bicarbonato de sodio",
+      "id": "bicarbonato-de-sodio"
+    },
+    {
+      "name": "Sal",
+      "id": "sal"
+    },
+    {
+      "name": "Mantequilla",
+      "id": "mantequilla"
+    },
+    {
+      "name": "Azúcar moreno",
+      "id": "azucar-moreno"
+    },
+    {
+      "name": "Huevo",
+      "id": "huevo"
+    },
+    {
+      "name": "Yogurt",
+      "id": "yogurt"
+    },
+    {
+      "name": "Vainilla",
+      "id": "vainilla"
+    },
+    {
+      "name": "Leche",
+      "id": "leche"
+    },
+    {
+      "name": "Arándanos",
+      "id": "arandanos"
     }
   ]
 }
