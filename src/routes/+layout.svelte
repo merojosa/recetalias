@@ -23,7 +23,7 @@
 	{@render children()}
 </main>
 <footer
-	class="bg-primary gap-2 text-white py-8 px-6 md:px-20 flex justify-evenly flex-col sm:flex-row items-center"
+	class="bg-primary gap-2 text-white py-4 px-6 md:px-20 flex justify-evenly flex-col sm:flex-row items-center"
 >
 	<div class="flex justify-center sm:justify-start items-center gap-2 w-full flex-1">
 		<img class="h-30" src={Logo2} alt="Logo secundario de Recetalias" />
