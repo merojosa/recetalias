@@ -69,7 +69,7 @@
 			}
 
 			return seed;
-		}, '') || 'Seleccione ingredientes para buscar recetas'
+		}, '') || 'Seleccione ingredientes'
 	);
 
 	function normalizeText(text: string): string {
