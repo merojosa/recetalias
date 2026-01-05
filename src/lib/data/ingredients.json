@@ -15,6 +15,36 @@
     {
       "name": "Azúcar ",
       "id": "azucar"
+    },
+    {
+      "name": "Harina"
+    },
+    {
+      "name": "Polvo de hornear"
+    },
+    {
+      "name": "Sal"
+    },
+    {
+      "name": "Mantequilla"
+    },
+    {
+      "name": "Azúcar moreno"
+    },
+    {
+      "name": "Huevos"
+    },
+    {
+      "name": "Yogurt"
+    },
+    {
+      "name": "Vainilla"
+    },
+    {
+      "name": "Leche"
+    },
+    {
+      "name": "Arándanos"
     }
   ]
 }
