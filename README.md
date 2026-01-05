@@ -2,6 +2,12 @@
 
 ## About
 
+Recetalias is a food recipes website curated by Natalia Díaz and developed by Jose Andrés Mejías. This repository contains both the website’s source code and the recipe content.
+
+A key aspect of the architecture is its use of Git as a backend, instead of a traditional relational database. This approach allows the site to remain fully static, significantly reducing infrastructure complexity and operational costs.
+
+Please note that we do not accept pull requests for new recipes. Contributions are welcome only for code-related improvements or fixes.
+
 ## Tech Stack
 
 - **Framework**: [SvelteKit](https://kit.svelte.dev/) with [Svelte 5](https://svelte.dev/) (using runes)
