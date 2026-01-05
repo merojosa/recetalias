@@ -1,5 +1,6 @@
 {
 	"files.associations": {
 		"*.css": "tailwindcss"
-	}
+	},
+	"tailwindCSS.files.exclude": ["**/src/lib/components/ui/**"]
 }

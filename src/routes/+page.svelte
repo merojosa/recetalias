@@ -3,8 +3,12 @@
 	import ingredientsData from '$lib/data/ingredients.json';
 	import { resolve } from '$app/paths';
 	import * as Select from '$lib/components/ui/select/index';
+	import { Input } from '$lib/components/ui/input/index';
+	import SearchIcon from '@lucide/svelte/icons/search';
 
 	let selectedIngredients = $state([] as string[]);
+
+	let searchIngredientsText = $state('');
 
 	const ingredientsFromData = ingredientsData.ingredients.toSorted((a, b) =>
 		a.name.localeCompare(b.name)
@@ -44,6 +48,17 @@
 		return recipesToReturn;
 	});
 
+	const filteredIngredients = $derived.by(() => {
+		if (searchIngredientsText) {
+			const normalizedSearch = normalizeText(searchIngredientsText);
+			return ingredientsFromData.filter((ingredient) =>
+				normalizeText(ingredient.name).includes(normalizedSearch)
+			);
+		}
+
+		return ingredientsFromData;
+	});
+
 	const triggerContent = $derived(
 		selectedIngredients.reduce((seed, current) => {
 			const found = ingredientsFromData.find((ingredient) => ingredient.id === current);
@@ -53,8 +68,15 @@
 			}
 
 			return seed;
-		}, '') || 'Seleccione ingredientes para buscar'
+		}, '') || 'Seleccione ingredientes para buscar recetas'
 	);
+
+	function normalizeText(text: string): string {
+		return text
+			.normalize('NFD')
+			.replace(/[\u0300-\u036f]/g, '')
+			.toLowerCase();
+	}
 </script>
 
 <svelte:head>
@@ -64,11 +86,25 @@
 <section class="w-full flex flex-col gap-2">
 	<h1 class="text-2xl">Búsqueda de recetas por ingredientes</h1>
 	<Select.Root type="multiple" bind:value={selectedIngredients}>
-		<Select.Trigger class="w-full">
-			{triggerContent}
+		<Select.Trigger
+			class="w-full text-left whitespace-normal! h-auto! min-h-9 py-2"
+			clear={selectedIngredients.length > 0}
+			onClear={() => (selectedIngredients = [])}
+		>
+			<span class="block">
+				{triggerContent}
+			</span>
 		</Select.Trigger>
-		<Select.Content>
-			{#each ingredientsFromData as ingredient (ingredient.id)}
+		<Select.Content class="h-72">
+			<div class="flex items-center pb-2">
+				<SearchIcon class="h-4" />
+				<Input
+					class="border-0 shadow-none focus-visible:ring-0 pl-1"
+					placeholder="Ingrese un ingrediente"
+					bind:value={searchIngredientsText}
+				/>
+			</div>
+			{#each filteredIngredients as ingredient (ingredient.id)}
 				<Select.Item value={ingredient.id} label={ingredient.name}>
 					{ingredient.name}
 				</Select.Item>
