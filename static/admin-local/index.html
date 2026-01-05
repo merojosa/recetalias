@@ -9,6 +9,63 @@
 	<!-- Include the script that builds the page and powers Decap CMS -->
 	<script src="https://unpkg.com/decap-cms@^3.9.0/dist/decap-cms.js"></script>
 	<script>
+		// Helper function to slugify a string
+		function slugify(text) {
+			return text
+				.toString()
+				.toLowerCase()
+				.normalize('NFD')
+				.replace(/[\u0300-\u036f]/g, '') // Remove accents
+				.replace(/[^a-z0-9\s-]/g, '') // Remove invalid chars
+				.trim()
+				.replace(/\s+/g, '-') // Replace spaces with -
+				.replace(/-+/g, '-'); // Replace multiple - with single -
+		}
+
+		// Auto-generate ingredient IDs from name
+		CMS.registerEventListener({
+			name: 'preSave',
+			handler: ({ entry }) => {
+				const data = entry.get('data');
+				const ingredients = data.get('ingredients');
+
+			if (ingredients) {
+				const ingredientArray = ingredients.toJS ? ingredients.toJS() : ingredients;
+				
+				// Track used IDs to prevent duplicates
+				const usedIds = new Set();
+				
+				// First pass: collect existing IDs
+				ingredientArray.forEach((ingredient) => {
+					if (ingredient.id) {
+						usedIds.add(ingredient.id);
+					}
+				});
+				
+				// Second pass: auto-generate IDs for ingredients without one
+				ingredientArray.forEach((ingredient) => {
+					if (ingredient.name && !ingredient.id) {
+						let baseId = slugify(ingredient.name);
+						let uniqueId = baseId;
+						let counter = 2;
+						
+						// If ID already exists, append counter until we find a unique one
+						while (usedIds.has(uniqueId)) {
+							uniqueId = `${baseId}-${counter}`;
+							counter++;
+						}
+						
+						ingredient.id = uniqueId;
+						usedIds.add(uniqueId);
+					}
+				});
+
+				// Update the entry data
+				return entry.get('data').set('ingredients', ingredientArray);
+			}
+			}
+		});
+
 		// Custom validation for unique recipe IDs and required instructions
 		CMS.registerEventListener({
 				name: 'preSave',

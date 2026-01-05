@@ -1,52 +1,112 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>CMS - Recetalias</title>
-	</head>
-	<body>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>CMS - Recetalias</title>
+</head>
+
+<body>
 	<!-- Include the script that builds the page and powers Decap CMS -->
 	<script src="https://unpkg.com/decap-cms@^3.9.0/dist/decap-cms.js"></script>
 	<script>
+		// Helper function to slugify a string
+		function slugify(text) {
+			return text
+				.toString()
+				.toLowerCase()
+				.normalize('NFD')
+				.replace(/[\u0300-\u036f]/g, '') // Remove accents
+				.replace(/[^a-z0-9\s-]/g, '') // Remove invalid chars
+				.trim()
+				.replace(/\s+/g, '-') // Replace spaces with -
+				.replace(/-+/g, '-'); // Replace multiple - with single -
+		}
+
+		// Auto-generate ingredient IDs from name
+		CMS.registerEventListener({
+			name: 'preSave',
+			handler: ({ entry }) => {
+				const data = entry.get('data');
+				const ingredients = data.get('ingredients');
+
+				if (ingredients) {
+					const ingredientArray = ingredients.toJS ? ingredients.toJS() : ingredients;
+
+					// Track used IDs to prevent duplicates
+					const usedIds = new Set();
+
+					// First pass: collect existing IDs
+					ingredientArray.forEach((ingredient) => {
+						if (ingredient.id) {
+							usedIds.add(ingredient.id);
+						}
+					});
+
+					// Second pass: auto-generate IDs for ingredients without one
+					ingredientArray.forEach((ingredient) => {
+						if (ingredient.name && !ingredient.id) {
+							let baseId = slugify(ingredient.name);
+							let uniqueId = baseId;
+							let counter = 2;
+
+							// If ID already exists, append counter until we find a unique one
+							while (usedIds.has(uniqueId)) {
+								uniqueId = `${baseId}-${counter}`;
+								counter++;
+							}
+
+							ingredient.id = uniqueId;
+							usedIds.add(uniqueId);
+						}
+					});
+
+					// Update the entry data
+					return entry.get('data').set('ingredients', ingredientArray);
+				}
+			}
+		});
+
 		// Custom validation for unique recipe IDs and required instructions
 		CMS.registerEventListener({
-				name: 'preSave',
-				handler: ({ entry }) => {
-					const data = entry.get('data');
-					const recipes = data.get('recipes');
+			name: 'preSave',
+			handler: ({ entry }) => {
+				const data = entry.get('data');
+				const recipes = data.get('recipes');
 
-					if (!recipes) return;
+				if (!recipes) return;
 
-					// Convert to plain JS array
-					const recipeArray = recipes.toJS ? recipes.toJS() : recipes;
+				// Convert to plain JS array
+				const recipeArray = recipes.toJS ? recipes.toJS() : recipes;
 
-					// Check for duplicate IDs
-					const ids = recipeArray.map((recipe) => recipe.id).filter(Boolean);
-					const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
+				// Check for duplicate IDs
+				const ids = recipeArray.map((recipe) => recipe.id).filter(Boolean);
+				const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
 
-					if (duplicates.length > 0) {
-						const uniqueDuplicates = [...new Set(duplicates)];
-						throw new Error(
-							`Duplicate recipe ID(s) found: ${uniqueDuplicates.join(', ')}. Each recipe must have a unique ID.`
-						);
-					}
-
-					// Check that all recipes have at least one instruction
-					const recipesWithoutInstructions = recipeArray.filter(
-						(recipe) => !recipe.instructions || recipe.instructions.length === 0
+				if (duplicates.length > 0) {
+					const uniqueDuplicates = [...new Set(duplicates)];
+					throw new Error(
+						`Duplicate recipe ID(s) found: ${uniqueDuplicates.join(', ')}. Each recipe must have a unique ID.`
 					);
-
-					if (recipesWithoutInstructions.length > 0) {
-						const titles = recipesWithoutInstructions
-							.map((recipe) => recipe.title || 'Sin título')
-							.join(', ');
-						throw new Error(
-							`La(s) siguiente(s) receta(s) debe(n) tener al menos una instrucción: ${titles}`
-						);
-					}
 				}
-			});
-		</script>
-	</body>
+
+				// Check that all recipes have at least one instruction
+				const recipesWithoutInstructions = recipeArray.filter(
+					(recipe) => !recipe.instructions || recipe.instructions.length === 0
+				);
+
+				if (recipesWithoutInstructions.length > 0) {
+					const titles = recipesWithoutInstructions
+						.map((recipe) => recipe.title || 'Sin título')
+						.join(', ');
+					throw new Error(
+						`La(s) siguiente(s) receta(s) debe(n) tener al menos una instrucción: ${titles}`
+					);
+				}
+			}
+		});
+	</script>
+</body>
+
 </html>
