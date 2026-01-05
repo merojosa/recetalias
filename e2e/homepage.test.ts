@@ -49,12 +49,12 @@ test.describe('Homepage', () => {
 		const trigger = page.locator('[data-slot="select-trigger"]');
 		await trigger.click();
 
-		const option1 = page.getByRole('option', { name: ingredient1.name });
+		const option1 = page.getByRole('option', { name: ingredient1.name, exact: true });
 		await expect(option1).toBeVisible();
 		await option1.click();
 		await expect(page.getByRole('heading', { name: testRecipe.title })).toBeVisible();
 
-		const option2 = page.getByRole('option', { name: ingredient2.name });
+		const option2 = page.getByRole('option', { name: ingredient2.name, exact: true });
 		await expect(option2).toBeVisible();
 		await option2.click();
 		await expect(page.getByRole('heading', { name: testRecipe.title })).toBeVisible();
