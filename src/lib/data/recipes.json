@@ -34,6 +34,80 @@
         "alt": "Una mano sostiene una cuchara con miel y la echa sobre un recipiente de vidrio con té negro."
       },
       "id": "te-negro-con-limon"
+    },
+    {
+      "description": "Esta receta es una traducción relativamente fiel de la receta de Sally Mckenny (Sally's Baking), quien es una fuente de consulta frecuente para mí. Su único aporte en este blog es que la receta está en español y con las medidas utilizadas en latinoamérica. Sally sugiere hacer un topping para los quequitos que lleva azúcar y nueces pero, en mi experiencia, no es necesario. Esta receta es para un molde de 12 muffins.",
+      "ingredients": [
+        {
+          "ingredientId": "harina",
+          "ingredientDetail": "1 y 3/4 de taza de harina (aprox. 219 gramos)"
+        },
+        {
+          "ingredientId": "bicarbonato-de-sodio",
+          "ingredientDetail": "1 cucharadita de bicarbonato de sodio"
+        },
+        {
+          "ingredientId": "polvo-de-hornear",
+          "ingredientDetail": "1 cucharadita de polvo de hornear"
+        },
+        {
+          "ingredientId": "sal",
+          "ingredientDetail": "1/2 cucharadita de sal"
+        },
+        {
+          "ingredientId": "mantequilla",
+          "ingredientDetail": "1 barra de mantequilla sin sal suavizada a temperatura ambiente (aprox. 113 g)"
+        },
+        {
+          "ingredientId": "azucar",
+          "ingredientDetail": "1/2 taza de azúcar (aprox. 100 g)"
+        },
+        {
+          "ingredientId": "azucar-moreno",
+          "ingredientDetail": "1/4 de taza de azúcar moreno (aprox. 50 g)"
+        },
+        {
+          "ingredientId": "huevo",
+          "ingredientDetail": "2 huevos grandes a temperatura ambiente"
+        },
+        {
+          "ingredientId": "yogurt",
+          "ingredientDetail": "1/2 taza de yogurt sin sabor a temperatura ambiente (aprox. 120 g)"
+        },
+        {
+          "ingredientId": "vainilla",
+          "ingredientDetail": "2 cucharaditas de extracto de vainilla"
+        },
+        {
+          "ingredientId": "leche",
+          "ingredientDetail": "1/4 de taza de leche a temperatura ambiente"
+        },
+        {
+          "ingredientId": "arandanos",
+          "ingredientDetail": "1 y 1/2 tazas de arándanos congelados o frescos (aprox. 210 g)"
+        }
+      ],
+      "image": {
+        "url": "/images/uploads/muffins-arandanos.jpg",
+        "alt": "Cuatro muffins de arándanos en un plato."
+      },
+      "date": "2026-01-04",
+      "instructions": [
+        "Precalentar el horno a 218 °C. Esta temperatura alta se usará únicamente en los primeros cinco minutos de cocción, pues permite que los agentes leudantes de la receta (polvo de hornear y bicarbonato) se expandan y creen el sombrerito del muffin, lo que en inglés se le llama \"muffin top\".",
+        "Engrase el molde para 12 muffins. Yo utilizo la mantequilla sobrante que queda en el empaque después de utilizarla, pero también es posible usar aceite líquido o grasa en spray. ",
+        "Prepare todos los ingredientes en el área de trabajo, es importante planificar que todos los ingredientes se encuentren a temperatura ambiente para que la masa se mezcle de manera homogénea. ",
+        "En un bol mediano, mezclar los ingredientes secos de la receta: la harina, el bicarbonato de sodio, el polvo de hornear y la sal. Mantenga aparte. ",
+        "Utilizando la batidora eléctrica, creme la mantequilla con el azúcar. Este efecto se logra batiendo la mantequilla suavizada junto con el azúcar y azúcar moreno en alta velocidad, hasta que sea suave y cremosa. En promedio, se tardan tres minutos hasta lograr que alcance dicha consistencia.",
+        "Manteniendo la batidora eléctrica en funcionamiento y en velocidad media, añada los dos huevos: un huevo a la vez, incorporando bien la mantequilla con azúcar. El primer huevo debe batirse alrededor de dos minutos antes de incorporar el segundo. ",
+        "Aún con la batidora en velocidad media, añada el yogurt y el extracto de vainilla, hasta que todo esté incorporado. ",
+        "Baje la velocidad de la batidora a nivel bajo, y añada todos los ingredientes secos que mezclamos al inicio. Es bueno dividir los ingredientes secos en tres tractos, pues eso ayuda a que no hayan grumos en la mezcla. La masa debe ser espesa y cremosa. ",
+        "Cuando esté lista, apague la batidora, y añada los arándanos. Mezcle manualmente y con una espátula para que los arándanos mantengan su forma. Es importante saber que no es necesario descongelar los arándanos antes de usarlos. ",
+        "Rellenar el molde previamente engrasado hasta el tope, pero sin que se desborde la mezcla.",
+        "Hornear durante 5 minutos a 218 °C. Sin abrir la puerta del horno y manteniendo los muffins adentro, cambie la temperatura a 177 °C. Hornee por 18 a 20 minutos, o hasta que pueda insertar un palillo de dientes y salga limpio. ",
+        "Al sacar los muffins, permita que se enfríen al menos por 5 minutos antes de desmoldarlos. Desmolde con cuidado, girando levemente los muffins antes de sacarlos por completo. Mantener los muffins a temperatura ambiente por hasta tres días, o también se pueden refrigerar por una semana. También es posible congelarlos hasta por tres meses."
+      ],
+      "id": "muffins-arandanos",
+      "title": "Muffins rellenos con arándanos"
     }
   ]
 }
