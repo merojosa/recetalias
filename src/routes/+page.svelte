@@ -7,8 +7,9 @@
 	import SearchIcon from '@lucide/svelte/icons/search';
 
 	let selectedIngredients = $state([] as string[]);
-
+	let selectOpen = $state(false);
 	let searchIngredientsText = $state('');
+	let searchInputRef = $state<HTMLInputElement | null>(null);
 
 	const ingredientsFromData = ingredientsData.ingredients.toSorted((a, b) =>
 		a.name.localeCompare(b.name)
@@ -77,6 +78,15 @@
 			.replace(/[\u0300-\u036f]/g, '')
 			.toLowerCase();
 	}
+
+	$effect(() => {
+		if (selectOpen && searchInputRef) {
+			// Use requestAnimationFrame to ensure DOM is ready and avoid focus conflicts
+			requestAnimationFrame(() => {
+				searchInputRef?.focus();
+			});
+		}
+	});
 </script>
 
 <svelte:head>
@@ -85,7 +95,7 @@
 
 <section class="w-full flex flex-col gap-2">
 	<h1 class="text-2xl">Búsqueda de recetas por ingredientes</h1>
-	<Select.Root type="multiple" bind:value={selectedIngredients}>
+	<Select.Root type="multiple" bind:value={selectedIngredients} bind:open={selectOpen}>
 		<Select.Trigger
 			class="w-full text-left whitespace-normal! h-auto! min-h-9 py-2"
 			clear={selectedIngredients.length > 0}
@@ -99,6 +109,7 @@
 			<div class="flex items-center pb-2">
 				<SearchIcon class="h-4" />
 				<Input
+					bind:ref={searchInputRef}
 					class="border-0 shadow-none focus-visible:ring-0 pl-1"
 					placeholder="Ingrese un ingrediente"
 					bind:value={searchIngredientsText}
