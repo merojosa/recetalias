@@ -17,7 +17,9 @@
 
 	const filteredRecipes = $derived.by(() => {
 		if (selectedIngredients.length === 0) {
-			return recipesData.recipes;
+			return recipesData.recipes.toSorted(
+				(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+			);
 		}
 
 		const recipesToReturn = [] as typeof recipesData.recipes;
@@ -46,7 +48,9 @@
 			}
 		}
 
-		return recipesToReturn;
+		return recipesToReturn.toSorted(
+			(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+		);
 	});
 
 	const filteredIngredients = $derived.by(() => {
@@ -105,7 +109,7 @@
 				{triggerContent}
 			</span>
 		</Select.Trigger>
-		<Select.Content class="h-72">
+		<Select.Content class="h-[22vh]">
 			<div class="flex items-center pb-2">
 				<SearchIcon class="h-4" />
 				<Input
