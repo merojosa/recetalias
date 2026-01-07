@@ -3,7 +3,7 @@
 
 	const ogTitle = $derived(`${data.recipe.title} - Recetalias`);
 	const ogDescription = $derived(
-		data.recipe.description || `Receta sencilla para preparar ${data.recipe.title}`
+		`Receta de cocina fácil y sencilla para preparar ${data.recipe.title}`
 	);
 	const ogImage = $derived(
 		data.recipe.image.url.startsWith('http')
