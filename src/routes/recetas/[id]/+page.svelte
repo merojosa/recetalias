@@ -1,9 +1,40 @@
 <script lang="ts">
 	let { data } = $props();
+
+	const ogTitle = $derived(`${data.recipe.title} - Recetalias`);
+	const ogDescription = $derived(
+		data.recipe.description || `Receta sencilla para preparar ${data.recipe.title}`
+	);
+	const ogImage = $derived(
+		data.recipe.image.url.startsWith('http')
+			? data.recipe.image.url
+			: `https://recetalias.com${data.recipe.image.url}`
+	);
+	const ogUrl = $derived(`https://recetalias.com/recetas/${data.recipe.id}`);
 </script>
 
 <svelte:head>
-	<title>{data.recipe.title} - Recetalias</title>
+	<title>{ogTitle}</title>
+	<meta name="description" content={ogDescription} />
+
+	<!-- Open Graph / Facebook / Instagram / WhatsApp / Telegram -->
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content={ogUrl} />
+	<meta property="og:title" content={ogTitle} />
+	<meta property="og:description" content={ogDescription} />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:site_name" content="Recetalias" />
+
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content={ogUrl} />
+	<meta name="twitter:title" content={ogTitle} />
+	<meta name="twitter:description" content={ogDescription} />
+	<meta name="twitter:image" content={ogImage} />
+
+	<!-- BlueSky (uses Open Graph) -->
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
 </svelte:head>
 
 <article class="flex gap-6 flex-col">

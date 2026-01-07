@@ -1,3 +1,11 @@
+<script module lang="ts">
+	const OG_TITLE = 'Búsqueda de recetas por ingredientes - Recetalias';
+	const OG_DESCRIPTION =
+		'Encuentra recetas deliciosas filtrando por los ingredientes que tengas disponibles. Descubre nuevas ideas para cocinar.';
+	const OG_IMAGE = 'https://recetalias.com/og-image.png';
+	const OG_URL = 'https://recetalias.com';
+</script>
+
 <script lang="ts">
 	import recipesData from '$lib/data/recipes.json';
 	import ingredientsData from '$lib/data/ingredients.json';
@@ -94,7 +102,27 @@
 </script>
 
 <svelte:head>
-	<title>Búsqueda de recetas por ingredientes - Recetalias</title>
+	<title>{OG_TITLE}</title>
+	<meta name="description" content={OG_DESCRIPTION} />
+
+	<!-- Open Graph / Facebook / Instagram / WhatsApp / Telegram -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={OG_URL} />
+	<meta property="og:title" content={OG_TITLE} />
+	<meta property="og:description" content={OG_DESCRIPTION} />
+	<meta property="og:image" content={OG_IMAGE} />
+	<meta property="og:site_name" content="Recetalias" />
+
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content={OG_URL} />
+	<meta name="twitter:title" content={OG_TITLE} />
+	<meta name="twitter:description" content={OG_DESCRIPTION} />
+	<meta name="twitter:image" content={OG_IMAGE} />
+
+	<!-- BlueSky (uses Open Graph) -->
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
 </svelte:head>
 
 <section class="w-full flex flex-col gap-2">
