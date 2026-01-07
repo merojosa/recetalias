@@ -1,7 +1,6 @@
 <script module lang="ts">
 	const OG_TITLE = 'Búsqueda de recetas por ingredientes - Recetalias';
-	const OG_DESCRIPTION =
-		'Encuentra recetas deliciosas filtrando por los ingredientes que tengas disponibles. Descubre nuevas ideas para cocinar.';
+	const OG_DESCRIPTION = 'Recetas de cocina fáciles y sencillas. ¡Busque por ingredientes!';
 	const OG_IMAGE = 'https://recetalias.com/og-image.png';
 	const OG_URL = 'https://recetalias.com';
 </script>
