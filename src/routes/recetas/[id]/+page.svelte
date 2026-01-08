@@ -1,7 +1,26 @@
 <script lang="ts">
-	import { Checkbox } from '$lib/components/ui/checkbox';
+	import { browser } from '$app/environment';
+	import Checkbox from '$lib/components/custom/Checkbox.svelte';
 
 	let { data } = $props();
+
+	const storageKey = $derived(`recipe-checkboxes-${data.recipe.id}`);
+
+	// Load initial state from session storage
+	function loadCheckedState(): Record<string, boolean> {
+		if (!browser) return {};
+		const stored = sessionStorage.getItem(storageKey);
+		return stored ? JSON.parse(stored) : {};
+	}
+
+	let checkedIngredients = $state<Record<string, boolean>>(loadCheckedState());
+
+	// Persist to session storage when state changes
+	$effect(() => {
+		if (browser) {
+			sessionStorage.setItem(storageKey, JSON.stringify(checkedIngredients));
+		}
+	});
 
 	const ogTitle = $derived(`${data.recipe.title} - Recetalias`);
 	const ogDescription = $derived(
@@ -13,22 +32,6 @@
 			: `https://recetalias.com${data.recipe.image.url}`
 	);
 	const ogUrl = $derived(`https://recetalias.com/recetas/${data.recipe.id}`);
-
-	const storageKey = $derived(`recipe-${data.recipe.id}-ingredients`);
-
-	let checkedIngredients = $state<Record<string, boolean>>({});
-
-	$effect(() => {
-		const stored = sessionStorage.getItem(storageKey);
-		if (stored) {
-			checkedIngredients = JSON.parse(stored);
-		}
-	});
-
-	function toggleIngredient(ingredientKey: string) {
-		checkedIngredients[ingredientKey] = !checkedIngredients[ingredientKey];
-		sessionStorage.setItem(storageKey, JSON.stringify(checkedIngredients));
-	}
 </script>
 
 <svelte:head>
@@ -71,13 +74,13 @@
 		<h2 class="text-2xl md:text-3xl pb-3">Ingredientes</h2>
 		<ul class="flex flex-col gap-4">
 			{#each data.recipe.ingredients as ingredient (`${ingredient.ingredientDetail}-${ingredient.ingredientId}`)}
-				{@const ingredientKey = `${ingredient.ingredientDetail}-${ingredient.ingredientId}`}
-
-				<li class="flex items-center gap-2">
+				{@const key = `${ingredient.ingredientDetail}-${ingredient.ingredientId}`}
+				<li class="flex gap-2">
 					<Checkbox
-						class="hover:cursor-pointer"
-						checked={checkedIngredients[ingredientKey] ?? false}
-						onCheckedChange={() => toggleIngredient(ingredientKey)}
+						class="relative top-1"
+						checked={checkedIngredients[key] ?? false}
+						onchange={(e: Event) =>
+							(checkedIngredients[key] = (e.currentTarget as HTMLInputElement).checked)}
 					/>
 					{ingredient.ingredientDetail}
 				</li>
