@@ -46,10 +46,7 @@
 			>
 		</p>
 		<img class="py-6" src={data.recipe.image.url} alt={data.recipe.image.alt} />
-
-		{#if data.recipe.description}
-			<p>{data.recipe.description}</p>
-		{/if}
+		<p>{data.recipe.description}</p>
 	</section>
 
 	<section>

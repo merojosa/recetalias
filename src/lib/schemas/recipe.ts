@@ -16,7 +16,7 @@ export const RecipeIngredientSchema = v.object({
 export const RecipeSchema = v.object({
 	id: v.string(),
 	title: v.string(),
-	description: v.string(),
+	description: v.pipe(v.string(), v.minLength(1)),
 	ingredients: v.pipe(
 		v.array(RecipeIngredientSchema),
 		v.minLength(1, 'At least one ingredient is required'),
