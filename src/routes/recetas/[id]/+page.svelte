@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { Checkbox } from '$lib/components/ui/checkbox';
+
 	let { data } = $props();
 
 	const ogTitle = $derived(`${data.recipe.title} - Recetalias`);
@@ -11,6 +13,22 @@
 			: `https://recetalias.com${data.recipe.image.url}`
 	);
 	const ogUrl = $derived(`https://recetalias.com/recetas/${data.recipe.id}`);
+
+	const storageKey = $derived(`recipe-${data.recipe.id}-ingredients`);
+
+	let checkedIngredients = $state<Record<string, boolean>>({});
+
+	$effect(() => {
+		const stored = sessionStorage.getItem(storageKey);
+		if (stored) {
+			checkedIngredients = JSON.parse(stored);
+		}
+	});
+
+	function toggleIngredient(ingredientKey: string) {
+		checkedIngredients[ingredientKey] = !checkedIngredients[ingredientKey];
+		sessionStorage.setItem(storageKey, JSON.stringify(checkedIngredients));
+	}
 </script>
 
 <svelte:head>
@@ -53,7 +71,16 @@
 		<h2 class="text-2xl md:text-3xl pb-3">Ingredientes</h2>
 		<ul class="flex flex-col gap-4">
 			{#each data.recipe.ingredients as ingredient (`${ingredient.ingredientDetail}-${ingredient.ingredientId}`)}
-				<li>{ingredient.ingredientDetail}</li>
+				{@const ingredientKey = `${ingredient.ingredientDetail}-${ingredient.ingredientId}`}
+
+				<li class="flex items-center gap-2">
+					<Checkbox
+						class="hover:cursor-pointer"
+						checked={checkedIngredients[ingredientKey] ?? false}
+						onCheckedChange={() => toggleIngredient(ingredientKey)}
+					/>
+					{ingredient.ingredientDetail}
+				</li>
 			{/each}
 		</ul>
 	</section>

@@ -29,8 +29,8 @@ importers:
         specifier: ^3.10.1
         version: 3.10.1
       '@lucide/svelte':
-        specifier: ^0.544.0
-        version: 0.544.0(svelte@5.46.1)
+        specifier: ^0.561.0
+        version: 0.561.0(svelte@5.46.1)
       '@playwright/test':
         specifier: ^1.57.0
         version: 1.57.0
@@ -539,8 +539,8 @@ packages:
     resolution: {integrity: sha512-XGSsWDweP80Fks16lwkAUIr54ICyBs6PsI4mpfTLQaWgEJRtY9xEV+PeyDpJ+sJEGZxqINlpmAwe/6tS1pP8Ng==}
     engines: {node: '>=10.3.0'}
 
-  '@lucide/svelte@0.544.0':
-    resolution: {integrity: sha512-9f9O6uxng2pLB01sxNySHduJN3HTl5p0HDu4H26VR51vhZfiMzyOMe9Mhof3XAk4l813eTtl+/DYRvGyoRR+yw==}
+  '@lucide/svelte@0.561.0':
+    resolution: {integrity: sha512-vofKV2UFVrKE6I4ewKJ3dfCXSV6iP6nWVmiM83MLjsU91EeJcEg7LoWUABLp/aOTxj1HQNbJD1f3g3L0JQgH9A==}
     peerDependencies:
       svelte: ^5
 
@@ -4711,7 +4711,7 @@ snapshots:
 
   '@logdna/tail-file@2.2.0': {}
 
-  '@lucide/svelte@0.544.0(svelte@5.46.1)':
+  '@lucide/svelte@0.561.0(svelte@5.46.1)':
     dependencies:
       svelte: 5.46.1
 
