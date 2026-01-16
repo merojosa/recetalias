@@ -16,7 +16,8 @@
 		"deploy": "dotenv -e .env -- pulumi up --cwd infra --stack prod --yes --non-interactive",
 		"deploy:local": "pnpm pulumi:login && dotenv -e .env -- pulumi up --cwd infra --stack prod --yes --non-interactive",
 		"test:e2e": "playwright test",
-		"test": "pnpm run test:e2e"
+		"test": "pnpm run test:e2e",
+		"knip": "knip"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.1",
@@ -40,22 +41,18 @@
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.13.1",
 		"globals": "^16.5.0",
+		"knip": "^5.80.2",
 		"prettier": "^3.7.4",
 		"prettier-plugin-svelte": "^3.4.1",
 		"prettier-plugin-tailwindcss": "^0.7.2",
 		"svelte": "^5.46.1",
 		"svelte-check": "^4.3.5",
 		"tailwind-merge": "^3.4.0",
-		"tailwind-variants": "^3.2.2",
 		"tailwindcss": "^4.1.18",
-		"ts-node": "^10.9.2",
 		"tw-animate-css": "^1.4.0",
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.51.0",
+		"valibot": "^1.2.0",
 		"vite": "^7.3.0"
-	},
-	"dependencies": {
-		"decap-cms-app": "^3.9.0",
-		"valibot": "^1.2.0"
 	}
 }

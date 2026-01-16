@@ -3,17 +3,17 @@ import ingredientsData from '$lib/data/ingredients.json';
 
 const validIngredients = ingredientsData.ingredients.map((ingredient) => ingredient.id);
 
-export const RecipeImageSchema = v.object({
+const RecipeImageSchema = v.object({
 	url: v.string(),
 	alt: v.string()
 });
 
-export const RecipeIngredientSchema = v.object({
+const RecipeIngredientSchema = v.object({
 	ingredientId: v.pipe(v.string(), v.picklist(validIngredients)),
 	ingredientDetail: v.string()
 });
 
-export const RecipeSchema = v.object({
+const RecipeSchema = v.object({
 	id: v.string(),
 	title: v.string(),
 	description: v.pipe(v.string(), v.minLength(1)),
@@ -41,6 +41,3 @@ export const RecipesFileSchema = v.object({
 });
 
 export type Recipe = v.InferOutput<typeof RecipeSchema>;
-export type RecipeImage = v.InferOutput<typeof RecipeImageSchema>;
-export type RecipeIngredient = v.InferOutput<typeof RecipeIngredientSchema>;
-export type RecipesFile = v.InferOutput<typeof RecipesFileSchema>;
