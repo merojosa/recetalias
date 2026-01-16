@@ -3,7 +3,7 @@
 	import favicon from '$lib/assets/favicon.svg?url';
 	import { resolve } from '$app/paths';
 	import Logo from '$lib/assets/logo.svelte';
-	import Logo2 from '$lib/assets/favicon.svg';
+	import Logo2 from '$lib/assets/simple-logo.svg';
 
 	let { children } = $props();
 </script>

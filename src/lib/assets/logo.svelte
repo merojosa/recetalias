@@ -133,6 +133,7 @@
 
 	.cls-3 {
 		fill: #314523;
+		shape-rendering: geometricPrecision;
 	}
 
 	.cls-4 {
@@ -141,6 +142,9 @@
 
 	.cls-5 {
 		fill: #6d9651;
+		stroke: #314523;
+		stroke-width: 0.6;
+		stroke-linejoin: round;
 	}
 
 	.cls-6 {
