@@ -59,6 +59,14 @@
     {
       "name": "Arándanos",
       "id": "arandanos"
+    },
+    {
+      "name": "Banano",
+      "id": "banano"
+    },
+    {
+      "name": "Cacao",
+      "id": "cacao"
     }
   ]
 }
