@@ -96,7 +96,7 @@
 			}
 		});
 
-		// Custom validation for unique recipe IDs and required instructions
+		// Custom validation for unique recipe IDs, ingredients, and instructions
 		CMS.registerEventListener({
 				name: 'preSave',
 				handler: ({ entry }) => {
@@ -116,6 +116,49 @@
 						const uniqueDuplicates = [...new Set(duplicates)];
 						throw new Error(
 							`Duplicate recipe ID(s) found: ${uniqueDuplicates.join(', ')}. Each recipe must have a unique ID.`
+						);
+					}
+
+					// Check that all recipes have at least one ingredient
+					const recipesWithoutIngredients = recipeArray.filter(
+						(recipe) => !recipe.ingredients || recipe.ingredients.length === 0
+					);
+
+					if (recipesWithoutIngredients.length > 0) {
+						const titles = recipesWithoutIngredients
+							.map((recipe) => recipe.title || 'Sin título')
+							.join(', ');
+						throw new Error(
+							`La(s) siguiente(s) receta(s) debe(n) tener al menos un ingrediente: ${titles}`
+						);
+					}
+
+					// Check for duplicate ingredients (by ingredientId) inside each recipe
+					const recipesWithDuplicateIngredients = recipeArray
+						.map((recipe) => {
+							const ingredientIds = (recipe.ingredients || [])
+								.map((ingredient) => (ingredient.ingredientId || '').trim())
+								.filter(Boolean);
+
+							const ingredientDuplicates = ingredientIds.filter(
+								(id, index) => ingredientIds.indexOf(id) !== index
+							);
+
+							if (ingredientDuplicates.length === 0) return null;
+
+							return {
+								title: recipe.title || recipe.id || 'Sin título',
+								duplicates: [...new Set(ingredientDuplicates)]
+							};
+						})
+						.filter(Boolean);
+
+					if (recipesWithDuplicateIngredients.length > 0) {
+						const details = recipesWithDuplicateIngredients
+							.map((recipe) => `${recipe.title}: ${recipe.duplicates.join(', ')}`)
+							.join(' | ');
+						throw new Error(
+							`Hay recetas con ingredientes duplicados (un ingrediente aparece mas de una vez): ${details}`
 						);
 					}
 

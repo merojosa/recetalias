@@ -47,6 +47,7 @@ collections:
               - label: 'Ingredientes'
                 name: 'ingredients'
                 widget: 'list'
+                required: true
                 label_singular: 'Ingrediente'
                 collapsed: false
                 summary: '{{fields.ingredientDetail}}'
