@@ -23,9 +23,7 @@
 	});
 
 	const ogTitle = $derived(`${data.recipe.title} - Recetalias`);
-	const ogDescription = $derived(
-		`Receta de cocina fácil y sencilla para preparar ${data.recipe.title}`
-	);
+	const ogDescription = $derived(data.recipe.description);
 	const ogImage = $derived(
 		data.recipe.image.url.startsWith('http')
 			? data.recipe.image.url
