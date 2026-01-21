@@ -1,6 +1,7 @@
 # Default: allow normal crawlers (SEO)
 User-agent: *
 Disallow: /admin
+Sitemap: https://recetalias.com/sitemap.xml
 
 # Block common AI/LLM crawlers
 User-agent: GPTBot
