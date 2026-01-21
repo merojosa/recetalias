@@ -13,10 +13,15 @@
 	import { Input } from '$lib/components/ui/input/index';
 	import SearchIcon from '@lucide/svelte/icons/search';
 
+	type Ingredient = (typeof ingredientsData.ingredients)[number];
+
 	let selectedIngredients = $state([] as string[]);
 	let selectOpen = $state(false);
 	let searchIngredientsText = $state('');
 	let searchInputRef = $state<HTMLInputElement | null>(null);
+	let selectContentRef = $state<HTMLElement | null>(null);
+	let selectedIngredientsAtOpen = $state([] as string[]);
+	let prevSelectOpen = $state(false);
 
 	const ingredientsFromData = ingredientsData.ingredients.toSorted((a, b) =>
 		a.name.localeCompare(b.name)
@@ -71,6 +76,18 @@
 		return ingredientsFromData;
 	});
 
+	const orderedFilteredIngredients = $derived.by(() => {
+		const selectedIds = selectOpen ? selectedIngredientsAtOpen : selectedIngredients;
+		const selectedSet = new Set(selectedIds);
+		const selectedOrdered = selectedIds
+			.map((id) => filteredIngredients.find((ingredient) => ingredient.id === id))
+			.filter((ingredient): ingredient is Ingredient => ingredient !== undefined);
+
+		const unselected = filteredIngredients.filter((ingredient) => !selectedSet.has(ingredient.id));
+
+		return [...selectedOrdered, ...unselected];
+	});
+
 	const triggerContent = $derived(
 		selectedIngredients.reduce((seed, current) => {
 			const found = ingredientsFromData.find((ingredient) => ingredient.id === current);
@@ -90,6 +107,10 @@
 			.toLowerCase();
 	}
 
+	function track(...args: unknown[]): number {
+		return args.length;
+	}
+
 	$effect(() => {
 		if (selectOpen && searchInputRef) {
 			// Use requestAnimationFrame to ensure DOM is ready and avoid focus conflicts
@@ -97,6 +118,23 @@
 				searchInputRef?.focus();
 			});
 		}
+	});
+
+	$effect(() => {
+		if (!prevSelectOpen && selectOpen) {
+			selectedIngredientsAtOpen = [...selectedIngredients];
+		}
+
+		prevSelectOpen = selectOpen;
+	});
+
+	$effect(() => {
+		if (!selectOpen) return;
+		track(selectedIngredientsAtOpen, searchIngredientsText);
+		requestAnimationFrame(() => {
+			selectContentRef?.scrollTo({ top: 0 });
+			requestAnimationFrame(() => selectContentRef?.scrollTo({ top: 0 }));
+		});
 	});
 </script>
 
@@ -137,7 +175,7 @@
 				{triggerContent}
 			</span>
 		</Select.Trigger>
-		<Select.Content class="h-[22vh]">
+		<Select.Content bind:ref={selectContentRef} class="h-[22vh]">
 			<div class="flex items-center pb-2">
 				<SearchIcon class="h-4" />
 				<Input
@@ -147,7 +185,7 @@
 					bind:value={searchIngredientsText}
 				/>
 			</div>
-			{#each filteredIngredients as ingredient (ingredient.id)}
+			{#each orderedFilteredIngredients as ingredient (ingredient.id)}
 				<Select.Item value={ingredient.id} label={ingredient.name}>
 					{ingredient.name}
 				</Select.Item>
