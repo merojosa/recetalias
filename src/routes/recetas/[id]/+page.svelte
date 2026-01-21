@@ -33,6 +33,7 @@
 </script>
 
 <svelte:head>
+	<link rel="canonical" href={ogUrl} />
 	<title>{ogTitle}</title>
 	<meta name="description" content={ogDescription} />
 

@@ -101,6 +101,7 @@
 </script>
 
 <svelte:head>
+	<link rel="canonical" href={OG_URL} />
 	<title>{OG_TITLE}</title>
 	<meta name="description" content={OG_DESCRIPTION} />
 

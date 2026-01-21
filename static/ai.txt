@@ -1,0 +1,9 @@
+# ai.txt
+# A voluntary opt-out for AI/LLM training and automated use.
+# Not a standard, but some agents/tools may honor it.
+
+User-Agent: *
+Disallow: /
+
+# Contact
+# If you need access, contact the site owner.
