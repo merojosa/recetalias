@@ -6,6 +6,10 @@
       "title": "Té negro con limón, estilo sureño",
       "ingredients": [
         {
+          "ingredientId": "agua",
+          "ingredientDetail": "1 litro de agua caliente"
+        },
+        {
           "ingredientId": "te-negro",
           "ingredientDetail": "5 bolsitas de té negro"
         },
