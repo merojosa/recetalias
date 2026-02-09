@@ -179,6 +179,83 @@
         "Llene el molde con la mezcla, aproximadamente hasta la mitad del molde. Al hornearse, el pan crecerá.",
         "Hornear a 177 °C durante aproximadamente 35 minutos o cuando un cuchillo pueda ser introducido en el centro del pan y no salga húmedo."
       ]
+    },
+    {
+      "id": "pollo-frito-agridulce",
+      "title": "Pollo frito agridulce que le robé a mi amiga Steph",
+      "description": "Estoy segura de que, desde que cocinó este pollo para mí, la cocina de Steph ha crecido y madurado. No obstante, comimos este pollo una vez y yo me robé su receta porque es muy fácil de cocinar, y, aunque los ingredientes son sencillos, tiene sabores muy complejos. Es un pollo muy reconfortante, interpretación latinoamericana del pollo agridulce asiático. Aunque se incluye la proporción para picante, puede ser ignorado para las personas que no les gusta ese perfil de sabor. Usualmente, acompaño este pollo con arroz blanco de tipo japonés y verduras, puede ser brócoli hervido o bok-choi sofrito.",
+      "date": "2026-02-08",
+      "instructions": [
+        "Corte las pechugas de pollo en trozos pequeños, como un bocado. Marinar el pollo en un recipiente junto con el aceite de oliva, el aceite de sésamo, el azúcar moreno y 2 cucharadas de salsa de soya. Este paso puede hacerse con antelación, procurando que el pollo descanse en la refrigadora, al menos, por una hora.",
+        "Mezcle el empanizado con la harina, maicena, sal y pimienta.",
+        "Empanice el pollo marinado, procurando que la mezcla de harina y maicena lo cubra bien.",
+        "Fría los trozos de pollo en un sarten bien aceitado. El secreto de freír es contar con el aceite entre 170°C y 190°C, pues si se alcanza más de 200°C se corre el riesgo de quemar el aceite.",
+        "Para hacer la salsa, mezclar en una olla de poca profundidad: las 4 cucharadas restantes de la salsa de soya, la salsa de tomate o ketchup, la miel, la media taza de agua y el picante. Mezclar los ingredientes y llevar a hervor, en temperatura media.",
+        "Una vez que la salsa haya espesado un poco, incorporar el pollo frito.",
+        "Cubrir el pollo con las semillas de sésamo, al gusto, y servir."
+      ],
+      "ingredients": [
+        {
+          "ingredientId": "pechuga-de-pollo",
+          "ingredientDetail": "2 pechugas de pollo deshuesadas y limpias"
+        },
+        {
+          "ingredientId": "aceite-de-sesamo",
+          "ingredientDetail": "1 cucharadita de aceite de sésamo"
+        },
+        {
+          "ingredientId": "aceite-de-oliva",
+          "ingredientDetail": "1 cucharadita de aceite de oliva"
+        },
+        {
+          "ingredientId": "salsa-de-soya",
+          "ingredientDetail": "6 cucharadas de salsa de soya"
+        },
+        {
+          "ingredientId": "azucar-moreno",
+          "ingredientDetail": "2 cucharaditas de azúcar moreno o tapa molida tipo Dulce-T"
+        },
+        {
+          "ingredientId": "harina",
+          "ingredientDetail": "7 cucharadas de harina"
+        },
+        {
+          "ingredientId": "maicena",
+          "ingredientDetail": "3 cucharadas de fécula de maíz, maicena"
+        },
+        {
+          "ingredientId": "sal",
+          "ingredientDetail": "1 cucharadita de sal"
+        },
+        {
+          "ingredientId": "pimienta",
+          "ingredientDetail": "1 cucharadita de pimienta"
+        },
+        {
+          "ingredientId": "miel",
+          "ingredientDetail": "2 cucharadas de miel"
+        },
+        {
+          "ingredientId": "chile-picante",
+          "ingredientDetail": "2 cucharadas de hojuelas de chile picante o chile en polvo"
+        },
+        {
+          "ingredientId": "salsa-de-tomate",
+          "ingredientDetail": "6 cucharadas de salsa de tomate, preferiblemente una marca acídica como Heinz"
+        },
+        {
+          "ingredientId": "agua",
+          "ingredientDetail": "1/2 taza de agua a temperatura ambiente"
+        },
+        {
+          "ingredientId": "semillas-de-sesamo",
+          "ingredientDetail": "Semillas de sésamo, mejor aún si son tostadas"
+        }
+      ],
+      "image": {
+        "url": "/images/uploads/pollo-frito-agridulce.jpg",
+        "alt": "Trozos de pollo frito cubiertos de salsa agridulce"
+      }
     }
   ]
 }
