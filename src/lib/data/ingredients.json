@@ -67,6 +67,46 @@
     {
       "name": "Cacao",
       "id": "cacao"
+    },
+    {
+      "name": "Pechuga de pollo",
+      "id": "pechuga-de-pollo"
+    },
+    {
+      "name": "Aceite de sésamo",
+      "id": "aceite-de-sesamo"
+    },
+    {
+      "name": "Aceite de oliva",
+      "id": "aceite-de-oliva"
+    },
+    {
+      "name": "Salsa de soya",
+      "id": "salsa-de-soya"
+    },
+    {
+      "name": "Maicena",
+      "id": "maicena"
+    },
+    {
+      "name": "Pimienta",
+      "id": "pimienta"
+    },
+    {
+      "name": "Chile picante",
+      "id": "chile-picante"
+    },
+    {
+      "name": "Salsa de tomate",
+      "id": "salsa-de-tomate"
+    },
+    {
+      "name": "Agua",
+      "id": "agua"
+    },
+    {
+      "name": "Semillas de sésamo",
+      "id": "semillas-de-sesamo"
     }
   ]
 }
