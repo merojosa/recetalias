@@ -67,7 +67,9 @@
 			>
 		</p>
 		<img class="py-6" src={data.recipe.image.url} alt={data.recipe.image.alt} />
-		<div class="[&_a]:underline [&_a]:text-blue-600 [&_a:hover]:text-blue-800">{@html data.descriptionHtml}</div>
+		<div class="[&_a]:underline [&_a]:text-blue-600 [&_a:hover]:text-blue-800">
+			{@html data.descriptionHtml}
+		</div>
 	</section>
 
 	<section>
