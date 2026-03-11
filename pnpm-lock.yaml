@@ -15,6 +15,9 @@ importers:
       decap-cms-app:
         specifier: ^3.10.1
         version: 3.10.1(@types/hoist-non-react-statics@3.3.7(@types/react@19.2.14))(@types/node@22.19.15)(@types/react@19.2.14)(graphql@15.10.1)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      snarkdown:
+        specifier: ^2.0.0
+        version: 2.0.0
       valibot:
         specifier: ^1.2.0
         version: 1.2.0(typescript@5.9.3)
@@ -3772,6 +3775,9 @@ packages:
   smart-buffer@4.2.0:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
+
+  snarkdown@2.0.0:
+    resolution: {integrity: sha512-MgL/7k/AZdXCTJiNgrO7chgDqaB9FGM/1Tvlcenenb7div6obaDATzs16JhFyHHBGodHT3B7RzRc5qk8pFhg3A==}
 
   socks-proxy-agent@8.0.5:
     resolution: {integrity: sha512-HehCEsotFqbPW9sJ8WVYB6UbmIMv7kUUORIF2Nncq4VQvBfNBLibW9YZR5dlYCSUhwcD628pRllm7n+E+YTzJw==}
@@ -8443,6 +8449,8 @@ snapshots:
       tiny-warning: 1.0.3
 
   smart-buffer@4.2.0: {}
+
+  snarkdown@2.0.0: {}
 
   socks-proxy-agent@8.0.5:
     dependencies:

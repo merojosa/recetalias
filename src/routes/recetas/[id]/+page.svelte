@@ -1,4 +1,5 @@
 <script lang="ts">
+	/* eslint-disable svelte/no-at-html-tags */
 	import { browser } from '$app/environment';
 	import Checkbox from '$lib/components/custom/Checkbox.svelte';
 
@@ -23,7 +24,7 @@
 	});
 
 	const ogTitle = $derived(`${data.recipe.title} - Recetalias`);
-	const ogDescription = $derived(data.recipe.description);
+	const ogDescription = $derived(data.ogDescription);
 	const ogImage = $derived(
 		data.recipe.image.url.startsWith('http')
 			? data.recipe.image.url
@@ -66,7 +67,7 @@
 			>
 		</p>
 		<img class="py-6" src={data.recipe.image.url} alt={data.recipe.image.alt} />
-		<p>{data.recipe.description}</p>
+		<div class="[&_a]:underline [&_a]:text-blue-600 [&_a:hover]:text-blue-800">{@html data.descriptionHtml}</div>
 	</section>
 
 	<section>

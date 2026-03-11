@@ -43,7 +43,15 @@ collections:
             fields:
               - { label: 'ID', name: 'id', widget: 'string', required: true, pattern: ['^[a-z0-9-]+$', 'Solo letras minúsculas, números y guiones'], hint: 'Compone el URL de la receta, no cambiarlo frecuentemente' }
               - { label: 'Título', name: 'title', widget: 'string', required: true }
-              - { label: 'Descripción', name: 'description', widget: 'text', required: true }
+              - label: 'Descripción'
+                name: 'description'
+                widget: 'markdown'
+                required: true
+                buttons:
+                  - bold
+                  - italic
+                  - link
+                editor_components: []
               - label: 'Ingredientes'
                 name: 'ingredients'
                 widget: 'list'

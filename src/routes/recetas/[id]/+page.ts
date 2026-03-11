@@ -1,7 +1,19 @@
 import * as v from 'valibot';
 import { error } from '@sveltejs/kit';
+import snarkdown from 'snarkdown';
 import { RecipesFileSchema, type Recipe } from '$lib/schemas/recipe';
 import type { EntryGenerator, PageLoad } from './$types';
+
+function markdownToHtml(md: string): string {
+	return snarkdown(md);
+}
+
+function stripMarkdown(md: string): string {
+	return md
+		.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // [text](url) → text
+		.replace(/[*_]{1,3}(.+?)[*_]{1,3}/g, '$1') // bold/italic → text
+		.trim();
+}
 
 export const entries: EntryGenerator = async () => {
 	const recipesData = await import('$lib/data/recipes.json');
@@ -19,5 +31,9 @@ export const load: PageLoad = async ({ params }) => {
 		error(404, 'Recipe not found');
 	}
 
-	return { recipe };
+	return {
+		recipe,
+		descriptionHtml: markdownToHtml(recipe.description),
+		ogDescription: stripMarkdown(recipe.description)
+	};
 };

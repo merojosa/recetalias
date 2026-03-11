@@ -56,6 +56,7 @@
 	},
 	"dependencies": {
 		"decap-cms-app": "^3.10.1",
+		"snarkdown": "^2.0.0",
 		"valibot": "^1.2.0"
 	}
 }
