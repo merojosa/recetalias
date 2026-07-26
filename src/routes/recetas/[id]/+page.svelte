@@ -23,6 +23,10 @@
 		}
 	});
 
+	// Format the ISO date (YYYY-MM-DD) as DD-MM-YYYY without going through Date,
+	// which would shift the day depending on the timezone
+	const formattedDate = $derived(data.recipe.date.split('-').reverse().join('-'));
+
 	const ogTitle = $derived(`${data.recipe.title} - Recetalias`);
 	const ogDescription = $derived(data.ogDescription);
 	const ogImage = $derived(
@@ -62,9 +66,7 @@
 	<section>
 		<h1 class="text-3xl md:text-4xl font-bold leading-tight">{data.recipe.title}</h1>
 		<p>
-			Publicado el <time datetime={data.recipe.date}
-				>{new Date(data.recipe.date).toLocaleDateString()}</time
-			>
+			Publicado el <time datetime={data.recipe.date}>{formattedDate}</time>
 		</p>
 		<img class="py-6" src={data.recipe.image.url} alt={data.recipe.image.alt} />
 		<div class="[&_a]:underline [&_a]:text-blue-600 [&_a:hover]:text-blue-800">

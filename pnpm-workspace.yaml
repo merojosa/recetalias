@@ -1,3 +1,8 @@
+allowBuilds:
+  '@pulumi/command': true
+  esbuild: true
+  protobufjs: false
+
 onlyBuiltDependencies:
   - esbuild
 
